@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">QuizTrivia</string>
+    <string name="app_name">Trivia Quiz</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -9,4 +9,47 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="option_selection_start_quiz_button">Start Quiz</string>
+    <string name="please_select_a_category">Please select a category</string>
+    <string name="please_select_num_of_questions">Please select number of questions</string>
+    <string name="please_select_difficulty">Please select quiz difficulty level</string>
+
+
+    <string-array name="categories">
+        <item>Any</item>
+        <item>General Knowledge</item>
+        <item>Entertainment: Books</item>
+        <item>Entertainment: Films</item>
+        <item>Entertainment: Music</item>
+        <item>Entertainment: Musical and Theatre</item>
+        <item>Entertainment: Television</item>
+        <item>Entertainment: Video Games</item>
+        <item>Entertainment: Board Games</item>
+        <item>Science: Nature</item>
+        <item>Science: Computer</item>
+        <item>Science: Mathematics</item>
+        <item>Mythology</item>
+        <item>Sports</item>
+    </string-array>
+
+    <string-array name="num_of_questions">
+        <item>Any</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+    </string-array>
+
+
+    <string-array name="quiz_difficulty_levels">
+        <item>Any</item>
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+
+    </string-array>
 </resources>

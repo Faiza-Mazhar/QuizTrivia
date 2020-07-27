@@ -4,25 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".optionselection.OptionSelectionFragment">
+    tools:context=".optionselection.OptionSelectionFragment"
+    android:paddingHorizontal="8dp">
 
     <TextView
-        android:id="@+id/textview_first"
-        android:layout_width="wrap_content"
+        android:id="@+id/option_selection_categories_text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_first_fragment"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/option_selection_categories"
+        android:text="@string/please_select_a_category"
+        />
+    <Spinner
+        android:id="@+id/option_selection_categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option_selection_categories_text"
+        app:layout_constraintBottom_toTopOf="@id/option_selection_num_of_questions_text"/>
+
+    <TextView
+        android:id="@+id/option_selection_num_of_questions_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option_selection_categories"
+        app:layout_constraintBottom_toTopOf="@id/option_selection_num_of_questions"
+        android:text="@string/please_select_num_of_questions"
+        />
+    <Spinner
+        android:id="@+id/option_selection_num_of_questions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option_selection_num_of_questions_text"
+        app:layout_constraintBottom_toTopOf="@id/option_selection_quiz_difficulty_text"
+        />
+    <TextView
+        android:id="@+id/option_selection_quiz_difficulty_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option_selection_num_of_questions"
+        app:layout_constraintBottom_toTopOf="@id/option_selection_quiz_difficulty"
+        android:text="@string/please_select_difficulty"
+        />
+    <Spinner
+        android:id="@+id/option_selection_quiz_difficulty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option_selection_quiz_difficulty_text"
+        app:layout_constraintBottom_toTopOf="@id/option_selection_start_quiz"
+        />
 
     <Button
-        android:id="@+id/button_first"
+        android:id="@+id/option_selection_start_quiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option_selection_quiz_difficulty"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/option_selection_start_quiz_button" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,6 @@ class ViewModelFactory() : ViewModelProvider.Factory{
         } as T
     }
 
-    private fun optionSelectionViewModel(): OptionSelectionViewModel = OptionSelectionViewModel(networkService, jsonParser)
+    private fun optionSelectionViewModel(): OptionSelectionViewModel = OptionSelectionViewModel()
 
 }

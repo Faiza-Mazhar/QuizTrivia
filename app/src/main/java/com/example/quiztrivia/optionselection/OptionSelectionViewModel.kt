@@ -1,34 +1,14 @@
 package com.example.quiztrivia.optionselection
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.quiztrivia.json.JsonParser
-import com.example.quiztrivia.network.NetworkService
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
-class OptionSelectionViewModel(private val networkService: NetworkService, private val jsonParser: JsonParser): ViewModel() {
+class OptionSelectionViewModel(): ViewModel() {
 
-    init {
-        getNetworkResponse()
+    private lateinit var selectedItemIndexes : SelectedItemIndexes
+
+    fun setIndexes(categoryIndex: Int, numOfQuestionIndex: Int, difficultyLevel:Int) {
+        selectedItemIndexes = SelectedItemIndexes(categoryIndex, numOfQuestionIndex, difficultyLevel)
     }
-
-    private fun getNetworkResponse() {
-        var networkResponse: String? = null
-
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                networkResponse = networkService.getNetworkResponse("https://opentdb.com/api.php?amount=10")
-            }
-            if(networkResponse!=null) {
-                val questionDefinition = jsonParser.getQuestionDefinition(networkResponse!!)?.results
-                Log.d("Faiza M", questionDefinition.toString())
-            }
-
-        }
-
-    }
-
 }
+
+data class SelectedItemIndexes(var category: Int = 0, var numOfQuestions: Int = 0, var difficultyLevel:Int = 0)
