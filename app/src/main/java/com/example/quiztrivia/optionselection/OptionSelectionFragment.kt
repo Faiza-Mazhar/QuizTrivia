@@ -19,7 +19,7 @@ class OptionSelectionFragment : Fragment(R.layout.fragment_first) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelFactory().create(OptionSelectionViewModel::class.java)
-        optionSelectionView = OptionSelectionView(view, requireContext())
+        optionSelectionView = OptionSelectionView(view)
         viewController = OptionSelectionController(viewModel, optionSelectionView)
     }
 }

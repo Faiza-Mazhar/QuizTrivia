@@ -1,13 +1,13 @@
 package com.example.quiztrivia.optionselection
 
-import android.content.Context
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import com.example.quiztrivia.R
 
-class OptionSelectionView (view: View, private val context: Context) {
+class OptionSelectionView (private val view: View) {
+
     val categories: Spinner = view.findViewById(R.id.option_selection_categories)
     val numOfQuestion: Spinner = view.findViewById(R.id.option_selection_num_of_questions)
     val quizDifficultyLevel: Spinner = view.findViewById(R.id.option_selection_quiz_difficulty)
@@ -19,7 +19,7 @@ class OptionSelectionView (view: View, private val context: Context) {
 
     fun populateCategoriesSpinner() {
         ArrayAdapter.createFromResource(
-            context,
+            view.context,
             R.array.categories,
             android.R.layout.simple_spinner_dropdown_item
         ).also { adapter ->
@@ -30,7 +30,7 @@ class OptionSelectionView (view: View, private val context: Context) {
 
     fun populateNumOfQuestionSpinner() {
         ArrayAdapter.createFromResource(
-            context,
+            view.context,
             R.array.num_of_questions,
             android.R.layout.simple_spinner_dropdown_item
         ).also { adapter ->
@@ -41,7 +41,7 @@ class OptionSelectionView (view: View, private val context: Context) {
 
     fun populateQuizDifficultyLevelSpinner() {
         ArrayAdapter.createFromResource(
-            context,
+            view.context,
             R.array.quiz_difficulty_levels,
             android.R.layout.simple_spinner_dropdown_item
         ).also { adapter ->
