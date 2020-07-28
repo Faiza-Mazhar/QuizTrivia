@@ -39,8 +39,4 @@ class OptionSelectionControllerTest {
 
         verify(mockViewModel).setIndexes(expectedIndex, expectedIndex, expectedIndex)
     }
-
-
-    fun tearDown() {
-    }
 }
