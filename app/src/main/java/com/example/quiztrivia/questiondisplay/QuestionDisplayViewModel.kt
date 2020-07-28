@@ -1,6 +1,5 @@
 package com.example.quiztrivia.questiondisplay
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.quiztrivia.json.JsonParser
@@ -24,7 +23,7 @@ class QuestionDisplayViewModel (private val networkService: NetworkService, priv
             }
             if(networkResponse!=null) {
                 val questionDefinition = jsonParser.getQuestionDefinition(networkResponse!!)?.results
-                Log.d("Faiza M", questionDefinition.toString())
+              //  Log.d("Faiza M", questionDefinition.toString())
             }
 
         }
