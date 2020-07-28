@@ -63,7 +63,7 @@ internal class IndexUtilsTest {
 
     @Test
     fun`if selectedItemIndex is (1, 1, 0), then generated URL will not have difficulty level` () {
-        val selectedItemIndexes = SelectedItemIndexes(1, 1, 1)
+        val selectedItemIndexes = SelectedItemIndexes(1, 1, 0)
         val expectedUrlString = "amount=5&category=9&type=multiple"
         Assert.assertEquals(expectedUrlString, getURLString(selectedItemIndexes))
     }
