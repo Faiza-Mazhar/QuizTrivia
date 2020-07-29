@@ -16,7 +16,11 @@
     </fragment>
     <fragment
         android:id="@+id/QuizQuestions"
-        android:name="com.example.quiztrivia.SecondFragment"
+        android:name="com.example.quiztrivia.questiondisplay.QuestionDisplayFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second"/>
+        tools:layout="@layout/fragment_question_display">
+        <argument
+            android:name="selectedIndexes"
+            app:argType="com.example.quiztrivia.optionselection.SelectedItemIndexes" />
+    </fragment>
 </navigation>

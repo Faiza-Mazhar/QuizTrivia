@@ -1,4 +1,4 @@
-package com.example.quiztrivia.network
+package com.example.quiztrivia.dataservice.network
 
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory

@@ -23,7 +23,7 @@ class OptionSelectionFragment : Fragment(R.layout.fragment_option_selection) {
 
         viewModel.selectedItemIndexes.observe(viewLifecycleOwner, Observer {
             if(it != null){
-                this.findNavController().navigate(R.id.action_OptionSelectionFragment_to_QuizQuestions)
+                this.findNavController().navigate(OptionSelectionFragmentDirections.actionOptionSelectionFragmentToQuizQuestions(it))
             }
         })
     }

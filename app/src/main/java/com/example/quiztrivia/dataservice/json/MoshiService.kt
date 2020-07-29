@@ -1,4 +1,4 @@
-package com.example.quiztrivia.json
+package com.example.quiztrivia.dataservice.json
 
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.Moshi
