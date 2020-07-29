@@ -2,8 +2,8 @@ package com.example.quiztrivia
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.quiztrivia.json.JsonParser
-import com.example.quiztrivia.network.OkhttpService
+import com.example.quiztrivia.dataservice.json.JsonParser
+import com.example.quiztrivia.dataservice.network.OkhttpService
 import com.example.quiztrivia.optionselection.OptionSelectionViewModel
 import com.example.quiztrivia.questiondisplay.QuestionDisplayViewModel
 

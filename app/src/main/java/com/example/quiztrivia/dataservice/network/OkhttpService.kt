@@ -1,4 +1,4 @@
-package com.example.quiztrivia.network
+package com.example.quiztrivia.dataservice.network
 
 import okhttp3.OkHttpClient
 import okhttp3.Request

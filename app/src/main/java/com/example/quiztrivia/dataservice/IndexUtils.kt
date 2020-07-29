@@ -1,5 +1,6 @@
-package com.example.quiztrivia.optionselection
+package com.example.quiztrivia.dataservice
 
+import com.example.quiztrivia.optionselection.SelectedItemIndexes
 import kotlin.random.Random
 
 fun getNumQuestionFromIndex(index: Int): String {
@@ -26,14 +27,20 @@ fun getCategoryNumberFromIndex(index: Int): String {
 
 fun getURLString(selectedItemIndexes: SelectedItemIndexes): String {
 
-    var urlString = "amount=${getNumQuestionFromIndex(selectedItemIndexes.numOfQuestions)}"
+    var urlString = "amount=${getNumQuestionFromIndex(
+        selectedItemIndexes.numOfQuestions
+    )}"
 
     if(selectedItemIndexes.category != 0) {
-            urlString += "&category=${getCategoryNumberFromIndex(selectedItemIndexes.category)}"
+            urlString += "&category=${getCategoryNumberFromIndex(
+                selectedItemIndexes.category
+            )}"
     }
 
     if(selectedItemIndexes.difficultyLevel != 0) {
-        urlString += "&difficulty=${getDifficultyLevelFromIndex(selectedItemIndexes.difficultyLevel)}"
+        urlString += "&difficulty=${getDifficultyLevelFromIndex(
+            selectedItemIndexes.difficultyLevel
+        )}"
     }
 
     return "$urlString&type=multiple"
