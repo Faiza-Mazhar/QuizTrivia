@@ -16,7 +16,16 @@ data class QuestionDefinition (
 )
 
 @JsonClass(generateAdapter = true)
-data class QuestionsDefinitionList(var results : List<QuestionDefinition>)
+data class QuestionsDefinitionList(var results : List<QuestionDefinition>) {
+
+}
+
+@JsonClass(generateAdapter = true)
+data class CategoryDefinition(val id: Int, val name: String)
+
+@JsonClass(generateAdapter = true)
+data class CategoryDefinitionList(val trivia_categories: List<CategoryDefinition>)
+
 
 data class QuestionMetadata (
     var category: String,
