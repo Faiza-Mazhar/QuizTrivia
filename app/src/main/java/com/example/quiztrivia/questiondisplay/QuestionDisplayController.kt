@@ -20,7 +20,7 @@ class QuestionDisplayController(
     private fun getQuestionMetadata() {
         questionDisplayViewModel.coroutineScope.launch {
             withContext(Dispatchers.IO) {
-                questionDisplayViewModel.questionsMetadata = questionDisplayViewModel.dataHandler.getQuestionMetadata(urlString)
+                questionDisplayViewModel.questionsMetadata = questionDisplayViewModel.dataManager.getQuestionsMetadata(urlString)
             }
         }
     }

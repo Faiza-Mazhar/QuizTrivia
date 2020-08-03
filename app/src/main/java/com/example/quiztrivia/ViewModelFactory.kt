@@ -2,7 +2,7 @@ package com.example.quiztrivia
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.quiztrivia.dataservice.DataHandlerOkhttp
+import com.example.quiztrivia.dataservice.DataManager
 import com.example.quiztrivia.homepage.HomeViewModel
 import com.example.quiztrivia.optionselection.OptionSelectionViewModel
 import com.example.quiztrivia.questiondisplay.QuestionDisplayViewModel
@@ -10,7 +10,7 @@ import com.example.quiztrivia.questiondisplay.QuestionDisplayViewModel
 class ViewModelFactory() : ViewModelProvider.Factory{
 
     companion object {
-        private val dataHandler = DataHandlerOkhttp()
+        private val dataManager = DataManager()
     }
 
     @Suppress("UNCHECKED_CAST")
@@ -23,10 +23,11 @@ class ViewModelFactory() : ViewModelProvider.Factory{
         } as T
     }
 
-    private fun optionSelectionViewModel(): OptionSelectionViewModel = OptionSelectionViewModel()
+    private fun optionSelectionViewModel(): OptionSelectionViewModel = OptionSelectionViewModel(
+        dataManager)
 
     private fun questionDisplayViewModel(): QuestionDisplayViewModel = QuestionDisplayViewModel(
-        dataHandler)
+       dataManager)
 
     private fun homeViewModel(): HomeViewModel = HomeViewModel()
 

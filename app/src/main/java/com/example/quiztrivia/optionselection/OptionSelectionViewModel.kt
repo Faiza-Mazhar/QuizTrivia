@@ -4,9 +4,10 @@ import android.os.Parcelable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.quiztrivia.dataservice.DataManager
 import kotlinx.android.parcel.Parcelize
 
-class OptionSelectionViewModel(): ViewModel() {
+class OptionSelectionViewModel(val dataManager: DataManager): ViewModel() {
 
     var selectedItemIndexes =  MutableLiveData<SelectedItemIndexes>()
     val coroutineScope = viewModelScope

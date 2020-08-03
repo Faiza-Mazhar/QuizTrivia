@@ -1,7 +1,6 @@
 package com.example.quiztrivia.optionselection
 
 import android.widget.Spinner
-import com.example.quiztrivia.dataservice.DataManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
@@ -11,7 +10,7 @@ import kotlinx.coroutines.withContext
 class OptionSelectionController (private val optionSelectionViewModel: OptionSelectionViewModel,
                                  private val optionSelectionView: OptionSelectionView) {
 
-    private val dataManager = DataManager()
+
 
     init {
         getCategoryDefinitionList()
@@ -27,9 +26,9 @@ class OptionSelectionController (private val optionSelectionViewModel: OptionSel
     private fun getCategoryDefinitionList() {
         optionSelectionViewModel.coroutineScope.launch {
             withContext(Dispatchers.IO){
-                optionSelectionViewModel.categoriesMetadata = dataManager.getCategoriesMetadata()
+                optionSelectionViewModel.categoriesMetadata = optionSelectionViewModel.dataManager.getCategoriesMetadata()
             }
-            optionSelectionViewModel.categoryArray = dataManager.getCategoriesArray(optionSelectionViewModel.categoriesMetadata)
+            optionSelectionViewModel.categoryArray = optionSelectionViewModel.dataManager.getCategoriesArray(optionSelectionViewModel.categoriesMetadata)
             optionSelectionView.populateCategoriesSpinner(optionSelectionViewModel.categoryArray!!)
         }
     }

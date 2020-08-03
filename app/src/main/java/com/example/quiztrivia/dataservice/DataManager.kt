@@ -1,6 +1,7 @@
 package com.example.quiztrivia.dataservice
 
 import com.example.quiztrivia.optionselection.CategoryMetadata
+import com.example.quiztrivia.optionselection.QuestionMetadata
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
@@ -13,6 +14,10 @@ class DataManager() {
 
     fun getCategoriesArray(categoriesMetadata: List<CategoryMetadata>) : Array<String?> {
         return dataHandler.getCategoryArray(categoriesMetadata)
+    }
+
+    suspend fun getQuestionsMetadata(urlString: String) : List<QuestionMetadata> {
+        return dataHandler.getQuestionMetadata(urlString)
     }
 }
 
