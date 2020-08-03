@@ -112,5 +112,6 @@ dependencies {
 
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
-
+    testImplementation 'org.mockito:mockito-inline:2.8.47'
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
 }
