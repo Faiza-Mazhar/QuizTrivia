@@ -14,9 +14,7 @@ class OptionSelectionController (private val optionSelectionViewModel: OptionSel
 
     private val dataManager = DataManager()
 
-
     init {
-
         getCategoryDefinitionList()
 
         optionSelectionView.populateNumOfQuestionSpinner()
