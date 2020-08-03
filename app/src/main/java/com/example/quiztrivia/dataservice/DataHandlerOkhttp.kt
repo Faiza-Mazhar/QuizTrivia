@@ -11,8 +11,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 class DataHandlerOkhttp(): DataHandler {
     private val okhttpService = OkhttpService()
     private val jsonParser = JsonParser()
-    override fun getQuestionDefinition(urlString: String): QuestionsDefinitionList {
-        TODO("Not yet implemented")
+    override suspend fun getQuestionDefinition(urlString: String): QuestionsDefinitionList? {
+        val response = getNetworkResponse(urlString)
+        return jsonParser.getQuestionDefinition(response)
     }
 
     override suspend fun getCategoryDefinition(urlString: String): CategoryDefinitionList? {

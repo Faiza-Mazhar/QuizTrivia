@@ -34,3 +34,7 @@ data class QuestionMetadata (
     var correctAnswer: String,
     var wrongAnswers: List<String>
 )
+
+data class CategoryMetadata (
+    val id: Int, val name: String
+)

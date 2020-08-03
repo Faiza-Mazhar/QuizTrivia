@@ -5,7 +5,7 @@ import com.example.quiztrivia.optionselection.QuestionsDefinitionList
 
 class DataHandlerRetroFit(): DataHandler {
 
-    override fun getQuestionDefinition(urlString: String): QuestionsDefinitionList {
+    override suspend fun getQuestionDefinition(urlString: String): QuestionsDefinitionList {
         TODO("Not yet implemented")
     }
 
