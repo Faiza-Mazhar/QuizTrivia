@@ -14,11 +14,12 @@ class OptionSelectionView (private val view: View) {
     private val startQuiz: Button = view.findViewById(R.id.option_selection_start_quiz)
 
     fun setPlayQuizClickListener(listener: () -> Unit) {
-        startQuiz.setOnClickListener { listener() }
+        startQuiz.setOnClickListener {
+            listener.invoke()
+        }
     }
 
     fun populateCategoriesSpinner(categoriesArray: Array<String?>) {
-
         val arrayAdapter = ArrayAdapter<String>(view.context,android.R.layout.simple_spinner_dropdown_item, categoriesArray)
         categories.adapter = arrayAdapter
 

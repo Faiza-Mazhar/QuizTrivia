@@ -13,24 +13,10 @@
     <string name="please_select_a_category">Please select a category</string>
     <string name="please_select_num_of_questions">Please select number of questions</string>
     <string name="please_select_difficulty">Please select quiz difficulty level</string>
+    <string name="home_label">Home</string>
+    <string name="home_page_direct_play">Play</string>
+    <string name="home_fragment_custom_quiz">Custom Quiz</string>
 
-
-    <string-array name="categories">
-        <item>Any</item>
-        <item>General Knowledge</item>
-        <item>Entertainment: Books</item>
-        <item>Entertainment: Films</item>
-        <item>Entertainment: Music</item>
-        <item>Entertainment: Musical and Theatre</item>
-        <item>Entertainment: Television</item>
-        <item>Entertainment: Video Games</item>
-        <item>Entertainment: Board Games</item>
-        <item>Science: Nature</item>
-        <item>Science: Computer</item>
-        <item>Science: Mathematics</item>
-        <item>Mythology</item>
-        <item>Sports</item>
-    </string-array>
 
     <string-array name="num_of_questions">
         <item>Any</item>

@@ -1,9 +1,12 @@
 package com.example.quiztrivia.homepage
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.quiztrivia.R
+import com.example.quiztrivia.ViewModelFactory
 
 class HomeFragment : Fragment(R.layout.home_fragment) {
 
@@ -13,10 +16,22 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private lateinit var viewModel: HomeViewModel
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelFactory().create(HomeViewModel::class.java)
+        HomeViewController(viewModel, HomeView(view))
+
+        viewModel.navigateToCustomPlay.observe(viewLifecycleOwner, Observer {
+            if(it == true ) {
+                this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToOptionSelectionFragment())
+            }
+        })
+
+        viewModel.navigateToDirectPlay.observe(viewLifecycleOwner, Observer {
+            if(it == true) {
+                this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToQuizQuestions(viewModel.selectedItemIndexes))
+            }
+        })
     }
 
 }

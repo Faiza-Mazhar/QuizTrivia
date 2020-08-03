@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.quiztrivia.dataservice.json.JsonParser
 import com.example.quiztrivia.dataservice.network.OkhttpService
+import com.example.quiztrivia.homepage.HomeViewModel
 import com.example.quiztrivia.optionselection.OptionSelectionViewModel
 import com.example.quiztrivia.questiondisplay.QuestionDisplayViewModel
 
@@ -19,6 +20,7 @@ class ViewModelFactory() : ViewModelProvider.Factory{
         return when (modelClass) {
             OptionSelectionViewModel::class.java -> optionSelectionViewModel()
             QuestionDisplayViewModel::class.java -> questionDisplayViewModel()
+            HomeViewModel::class.java -> homeViewModel()
             else -> throw IllegalArgumentException()
         } as T
     }
@@ -28,5 +30,7 @@ class ViewModelFactory() : ViewModelProvider.Factory{
     private fun questionDisplayViewModel(): QuestionDisplayViewModel = QuestionDisplayViewModel(
         networkService,
         jsonParser)
+
+    private fun homeViewModel(): HomeViewModel = HomeViewModel()
 
 }
