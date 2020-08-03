@@ -1,21 +1,20 @@
 package com.example.quiztrivia.dataservice
 
-import com.example.quiztrivia.optionselection.QuestionMetadata
-import com.example.quiztrivia.optionselection.SelectedItemIndexes
+import com.example.quiztrivia.optionselection.CategoryDefinitionList
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-class DataManager(private val selectedItemIndexes: SelectedItemIndexes) {
-
+@ExperimentalCoroutinesApi
+class DataManager() {
     private val dataHandler = DataHandlerOkhttp()
+    private val dataAdapter = DataAdapter()
 
-    init {
-        val questionDefinitionList = dataHandler.getQuestionDefinition(convertIndexesToURLString())
+    suspend fun getCategoriesDefinition(): CategoryDefinitionList? {
+        return dataHandler.getCategoryDefinition("https://opentdb.com/api_category.php")
     }
 
-    private fun convertIndexesToURLString(): String {
-        return getURLString(selectedItemIndexes)
-    }
-
-    fun getQuestionMetadataList(): List<QuestionMetadata>?{
-        return null
+    fun getCategoriesNames(categoryDefinitionList: CategoryDefinitionList) {
+        dataAdapter.convertCategoryDefinitionListToArray(categoryDefinitionList)
     }
 }
+
+

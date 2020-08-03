@@ -5,6 +5,7 @@ import com.nhaarman.mockito_kotlin.argumentCaptor
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -21,6 +22,7 @@ class OptionSelectionControllerTest {
         MockitoAnnotations.initMocks(this)
     }
 
+    @ExperimentalCoroutinesApi
     @Test
     fun `when user click on play quiz button, selected category, selected number of question and selected difficulty level are updated` () {
         val playQuizClickCaptor = argumentCaptor< () -> Unit>()

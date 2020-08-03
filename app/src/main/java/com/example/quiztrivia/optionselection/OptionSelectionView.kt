@@ -17,15 +17,11 @@ class OptionSelectionView (private val view: View) {
         startQuiz.setOnClickListener { listener() }
     }
 
-    fun populateCategoriesSpinner() {
-        ArrayAdapter.createFromResource(
-            view.context,
-            R.array.categories,
-            android.R.layout.simple_spinner_dropdown_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            categories.adapter = adapter
-        }
+    fun populateCategoriesSpinner(categoriesArray: Array<String?>) {
+
+        val arrayAdapter = ArrayAdapter<String>(view.context,android.R.layout.simple_spinner_dropdown_item, categoriesArray)
+        categories.adapter = arrayAdapter
+
     }
 
     fun populateNumOfQuestionSpinner() {

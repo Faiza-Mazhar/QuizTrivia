@@ -1,34 +1,31 @@
 package com.example.quiztrivia.dataservice.network
 
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.example.quiztrivia.optionselection.CategoryDefinitionList
 import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
-class RetrofitService : NetworkService {
+class RetrofitService {
     private val baseURL = "https://opentdb.com/"
-    companion object {
-        private const val REMOTE_CONFIG_REFRESH_PERIOD_MILLIS = 600_000L
-    }
 
-    private fun getRetrofit(url: String) : Retrofit {
+    private fun getRetrofit() : Retrofit {
         return Retrofit
               .Builder()
-              .baseUrl(url)
-              .addCallAdapterFactory(CoroutineCallAdapterFactory())
-              .addConverterFactory(ScalarsConverterFactory.create())
+              .baseUrl(baseURL)
+              .addConverterFactory(MoshiConverterFactory.create())
               .build()
     }
 
     interface ApiService {
-        @GET("api.php?amount=10")
-        suspend fun getResponseAsync(): Deferred<String>
+        @GET("api_category.php")
+        suspend fun getResponseAsync(): Deferred<CategoryDefinitionList>
     }
 
-    override suspend fun getNetworkResponse(url: String): String {
-        val apiService = getRetrofit(baseURL).create(ApiService::class.java)
+    suspend fun getNetworkResponse(url: String): CategoryDefinitionList {
+        val apiService = getRetrofit().create(ApiService::class.java)
         return apiService.getResponseAsync().await()
     }
 }
+
