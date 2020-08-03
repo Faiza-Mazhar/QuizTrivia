@@ -1,7 +1,7 @@
 package com.example.quiztrivia.optionselection
 
-import android.util.Log
 import android.widget.Spinner
+import com.example.quiztrivia.dataservice.DataAdapter
 import com.example.quiztrivia.dataservice.DataManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -13,23 +13,27 @@ class OptionSelectionController (private val optionSelectionViewModel: OptionSel
                                  private val optionSelectionView: OptionSelectionView) {
 
     private val dataManager = DataManager()
-    private lateinit var categoryDefinitionList: CategoryDefinitionList
+
 
     init {
 
-        optionSelectionViewModel.coroutineScope.launch {
-            withContext(Dispatchers.IO){
-                categoryDefinitionList = dataManager.getCategoriesDefinition()!!
-                Log.d("Faiza", categoryDefinitionList.toString())
-            }
-        }
+        getCategoryDefinitionList()
 
-        optionSelectionView.populateCategoriesSpinner()
         optionSelectionView.populateNumOfQuestionSpinner()
         optionSelectionView.populateQuizDifficultyLevelSpinner()
 
         optionSelectionView.setPlayQuizClickListener {
             optionSelectionViewModel.setIndexes( getNumberOfQuestionsIndex(), getCategoryIndex(), getDifficultyLevelIndex())
+        }
+    }
+
+    private fun getCategoryDefinitionList() {
+        optionSelectionViewModel.coroutineScope.launch {
+            withContext(Dispatchers.IO){
+                optionSelectionViewModel.categoryDefinitionList = dataManager.getCategoriesDefinition()!!
+            }
+            optionSelectionViewModel.categoryArray = DataAdapter().convertCategoryDefinitionListToArray(optionSelectionViewModel.categoryDefinitionList)
+            optionSelectionView.populateCategoriesSpinner(optionSelectionViewModel.categoryArray!!)
         }
     }
 

@@ -12,5 +12,4 @@ class DataAdapter {
         return categories
     }
 
-
 }
