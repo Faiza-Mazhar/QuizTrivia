@@ -64,7 +64,7 @@ internal class DataHandlerOkhttpTest {
         )
         Assert.assertEquals(
             expectedJsonResponse,
-            jsonParser.getQuestionDefinition(questionsNetworkResponse)
+            jsonParser.questionsDefinitionList(questionsNetworkResponse)
         )
     }
 

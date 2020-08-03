@@ -3,22 +3,27 @@ package com.example.quiztrivia.dataservice
 import com.example.quiztrivia.Outcome
 import com.example.quiztrivia.dataservice.json.JsonParser
 import com.example.quiztrivia.dataservice.network.OkhttpService
-import com.example.quiztrivia.optionselection.CategoryDefinitionList
-import com.example.quiztrivia.optionselection.QuestionsDefinitionList
+import com.example.quiztrivia.optionselection.CategoryMetadata
+import com.example.quiztrivia.optionselection.QuestionMetadata
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 class DataHandlerOkhttp(): DataHandler {
+
     private val okhttpService = OkhttpService()
     private val jsonParser = JsonParser()
-    override suspend fun getQuestionDefinition(urlString: String): QuestionsDefinitionList? {
+    private val dataAdapter = DataAdapter()
+
+    override suspend fun getQuestionMetadata(urlString: String): List<QuestionMetadata>{
         val response = getNetworkResponse(urlString)
-        return jsonParser.getQuestionDefinition(response)
+        val questionsDefinitionList = jsonParser.questionsDefinitionList(response)
+        return dataAdapter.convertQuestionDefinitionToQuestionMetadata(questionsDefinitionList!!)
     }
 
-    override suspend fun getCategoryDefinition(urlString: String): CategoryDefinitionList? {
+    override suspend fun getCategoryMetadata(urlString: String): List<CategoryMetadata>  {
         val response = getNetworkResponse(urlString)
-        return jsonParser.getCategoryDefinitionList(response)
+        val categoryDefinitionList = jsonParser.getCategoryDefinitionList(response)
+        return dataAdapter.convertCategoryDefinitionToCategoryMetadata(categoryDefinitionList)
     }
 
     private suspend fun getNetworkResponse(urlString: String): String {
@@ -26,5 +31,9 @@ class DataHandlerOkhttp(): DataHandler {
             is Outcome.Success -> outcome.payload
             is Outcome.Failure -> outcome.error.toString()
         }
+    }
+
+    fun getCategoryArray(categoryMetadata: List<CategoryMetadata>) : Array<String?> {
+        return dataAdapter.convertCategoryDefinitionListToArray(categoryMetadata)
     }
 }

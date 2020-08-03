@@ -10,7 +10,7 @@ class OptionSelectionViewModel(): ViewModel() {
 
     var selectedItemIndexes =  MutableLiveData<SelectedItemIndexes>()
     val coroutineScope = viewModelScope
-    lateinit var categoryDefinitionList: CategoryDefinitionList
+    lateinit var categoriesMetadata: List<CategoryMetadata>
     var categoryArray: Array<String?>? = null
 
     fun setIndexes(numOfQuestionIndex: Int, categoryIndex: Int, difficultyLevel:Int) {
