@@ -98,9 +98,9 @@
 
     <Button
         android:id="@+id/question_display_submit"
-        style="@style/lighterGreenWithBlackText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/text_olive_bold_centre_light_background"
         android:text="Submit"
         app:layout_constraintBottom_toTopOf="@id/question_display_next"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,9 +109,9 @@
 
     <Button
         android:id="@+id/question_display_next"
-        style="@style/lighterGreenWithBlackText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/text_olive_bold_centre_light_background"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

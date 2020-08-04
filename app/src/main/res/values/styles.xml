@@ -16,14 +16,24 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="text_black" parent="TextAppearance.AppCompat">
-        <item name="android:textColor">#03040B</item>
-        <item name ="android:textAlignment">center</item>
+    <style name="text_oliveGreen" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/oliveGreen</item>
+    </style>
+
+    <style name="text_olive_bold" parent="text_oliveGreen">
         <item name ="android:textStyle">bold</item>
     </style>
 
-    <style name="lighterGreenWithBlackText" parent="text_black">
+    <style name="text_olive_bold_centre" parent="text_oliveGreen">
+        <item name ="android:textStyle">bold</item>
+        <item name ="android:textAlignment">center</item>
+    </style>
+
+    <style name="text_olive_bold_centre_light_background" parent="text_olive_bold_centre">
         <item name="android:background">@color/lighterGreen</item>
+    </style>
+
+    <style name="lighterGreenWithOliveText" parent="text_olive_bold_centre">
         <item name="android:elevation">10dp</item>
         <item name="android:radius">10dp</item>
         <item name="android:paddingHorizontal">8dp</item>
@@ -32,5 +42,18 @@
 
     <style name="fragmentBackground">
         <item name="android:background">@color/moreLightestGreen</item>
+    </style>
+
+    <style name="spinner_style" parent="text_oliveGreen">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingStart">2dp</item>
+        <item name="android:paddingEnd">2dp</item>
+        <item name="android:layout_marginHorizontal">4dp</item>
+        <item name="android:layout_marginVertical">4dp</item>
+        <item name="android:background">@color/lightestGreen</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 </resources>

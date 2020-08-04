@@ -10,7 +10,7 @@
 
     <Button
         android:id="@+id/game_fragment_direct_play"
-        style="@style/lighterGreenWithBlackText"
+        style="@style/text_olive_bold_centre_light_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/home_page_direct_play"
@@ -31,7 +31,7 @@
 
     <Button
         android:id="@+id/game_fragment_custom_play"
-        style="@style/lighterGreenWithBlackText"
+        style="@style/text_olive_bold_centre_light_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/home_fragment_custom_quiz"
