@@ -60,6 +60,7 @@ class QuestionDisplayController(
             } else {
                 displayWrongAnswerReply()
             }
+        questionDisplayView.hideSubmitButton().showNextButton()
     }
 
     private fun nextQuestion() {
@@ -68,6 +69,7 @@ class QuestionDisplayController(
             questionDisplayViewModel.currentQuestion++
             bindData(questionDisplayViewModel.questionsMetadata[questionDisplayViewModel.currentQuestion])
             updateCurrentQuestionDisplay()
+            questionDisplayView.showSubmitButton().hideNextButton()
         } else {
             val bundle = bundleOf("finalScore" to
                     FinalScore(

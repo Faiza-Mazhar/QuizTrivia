@@ -8,42 +8,35 @@
     style="@style/fragmentBackground"
     tools:context=".questiondisplay.QuestionDisplayFragment">
 
-
-    <TextView
-        android:id="@+id/question_display_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Category"
-        app:layout_constraintBottom_toTopOf="@id/question_display_num_of_question"
-        app:layout_constraintEnd_toStartOf="@id/question_display_difficulty"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/question_display_difficulty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Difficulty"
+    <include
+        layout="@layout/category_difficulty_info"
+        android:id="@+id/question_display_category_difficulty_info"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/question_display_num_of_question"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/question_display_category"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <TextView
         android:id="@+id/question_display_num_of_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/text_olive_bold_centre"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
         android:text="Questions "
-        app:layout_constraintBottom_toTopOf="@id/question_display_question_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/question_display_category" />
+        app:layout_constraintTop_toBottomOf="@id/question_display_category_difficulty_info"
+        app:layout_constraintBottom_toTopOf="@id/question_display_question_text"/>
 
     <TextView
         android:id="@+id/question_display_question_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="8dp"
+        style="@style/text_olive_bold_centre"
+        android:textSize="20sp"
         android:text="Here is my question"
         app:layout_constraintBottom_toTopOf="@id/question_display_radio_group"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,53 +45,53 @@
         app:layout_constraintTop_toBottomOf="@id/question_display_num_of_question" />
 
     <RadioGroup
-        android:id="@+id/question_display_radio_group"
+    android:id="@+id/question_display_radio_group"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical"
+    android:paddingHorizontal="24dp"
+    app:layout_constraintBottom_toTopOf="@id/question_display_submit"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/question_display_question_text">
+
+    <RadioButton
+        android:id="@+id/question_display_answer_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
-        android:orientation="vertical"
-        android:paddingHorizontal="24dp"
-        app:layout_constraintBottom_toTopOf="@id/question_display_submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/question_display_question_text">
+        android:checked="true"
+        android:text="@{game.answers[0]}"
+        tools:text="Blue" />
 
-        <RadioButton
-            android:id="@+id/question_display_answer_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@{game.answers[0]}"
-            tools:text="Blue" />
+    <RadioButton
+        android:id="@+id/question_display_answer_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@{game.answers[0]}"
+        tools:text="Blue" />
 
-        <RadioButton
-            android:id="@+id/question_display_answer_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@{game.answers[0]}"
-            tools:text="Blue" />
+    <RadioButton
+        android:id="@+id/question_display_answer_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@{game.answers[0]}"
+        tools:text="Blue" />
 
-        <RadioButton
-            android:id="@+id/question_display_answer_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@{game.answers[0]}"
-            tools:text="Blue" />
-
-        <RadioButton
-            android:id="@+id/question_display_answer_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@{game.answers[0]}"
-            tools:text="Blue" />
-    </RadioGroup>
+    <RadioButton
+        android:id="@+id/question_display_answer_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@{game.answers[0]}"
+        tools:text="Blue" />
+</RadioGroup>
 
     <Button
         android:id="@+id/question_display_submit"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/text_olive_bold_centre_light_background"
         android:text="Submit"
@@ -109,14 +102,16 @@
 
     <Button
         android:id="@+id/question_display_next"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/text_olive_bold_centre_light_background"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/question_display_submit" />
+        app:layout_constraintTop_toBottomOf="@id/question_display_submit"
+        android:visibility="gone"
+        />
 
     <ProgressBar
         android:id="@+id/question_display_progressBar"
@@ -132,6 +127,7 @@
         android:id="@+id/question_display_answer_reply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/text_olive_bold_centre"
         android:text="TextView"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

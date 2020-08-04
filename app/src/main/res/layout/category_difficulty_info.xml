@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:showIn="@layout/fragment_question_display"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:paddingTop="4dp">
+
+    <TextView
+        android:id="@+id/question_display_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/text_olive_bold_centre"
+        android:text="Category"
+     />
+
+    <Space
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+    <TextView
+        android:id="@+id/question_display_difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/text_olive_bold_centre"
+        android:text="Difficulty" />
+</LinearLayout>
