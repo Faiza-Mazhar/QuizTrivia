@@ -33,15 +33,12 @@
         <item name="android:background">@color/lighterGreen</item>
     </style>
 
-    <style name="lighterGreenWithOliveText" parent="text_olive_bold_centre">
-        <item name="android:elevation">10dp</item>
-        <item name="android:radius">10dp</item>
-        <item name="android:paddingHorizontal">8dp</item>
-        <item name="android:paddingVertical">8dp</item>
-    </style>
-
     <style name="fragmentBackground">
         <item name="android:background">@color/moreLightestGreen</item>
+    </style>
+
+    <style name="spinner_title" parent="text_oliveGreen">
+        <item name="android:textSize">18dp</item>
     </style>
 
     <style name="spinner_style" parent="text_oliveGreen">
