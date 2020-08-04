@@ -12,15 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        style="@style/text_olive_bold_centre"
+        android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintBottom_toTopOf="@id/game_finish_start_again"
+        app:layout_constraintBottom_toTopOf="@id/game_finish_start_again"
         android:text="@string/score" />
 
     <Button
         android:id="@+id/game_finish_start_again"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/start_again"
         style="@style/text_olive_bold_centre_light_background"
