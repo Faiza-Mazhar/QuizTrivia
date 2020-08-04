@@ -49,17 +49,17 @@ internal class IndexUtilsTest {
     }
 
     @Test
-    fun `category number is 6 more than the index`() {
+    fun `category number is 9 more than the index`() {
         val expectedString = "15"
         Assert.assertEquals(expectedString,
-            getCategoryNumberFromIndex(7)
+            getCategoryNumberFromIndex(6)
         )
     }
 
     @Test
     fun `if selectedItemIndex is (2, 3, 2), then it generated the url with all the fields`() {
         val selectedItemIndexes = SelectedItemIndexes(1, 1, 2)
-        val expectedUrlString = "amount=5&category=9&difficulty=medium&type=multiple"
+        val expectedUrlString = "amount=5&category=10&difficulty=medium&type=multiple"
         Assert.assertEquals(expectedUrlString,
             getURLString(selectedItemIndexes)
         )
@@ -86,7 +86,7 @@ internal class IndexUtilsTest {
     @Test
     fun`if selectedItemIndex is (1, 1, 0), then generated URL will not have difficulty level` () {
         val selectedItemIndexes = SelectedItemIndexes(1, 1, 0)
-        val expectedUrlString = "amount=5&category=9&type=multiple"
+        val expectedUrlString = "amount=5&category=10&type=multiple"
         Assert.assertEquals(expectedUrlString,
             getURLString(selectedItemIndexes)
         )

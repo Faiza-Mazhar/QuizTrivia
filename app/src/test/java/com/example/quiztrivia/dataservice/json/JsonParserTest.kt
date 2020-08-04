@@ -14,7 +14,7 @@ internal class JsonParserTest {
 
     @Test
     fun `can parse valid json to questionDefinitionList `() {
-        Assert.assertEquals(2, jsonParser.getQuestionDefinition(questionsJsonString)?.results?.size)
+        Assert.assertEquals(2, jsonParser.questionsDefinitionList(questionsJsonString)?.results?.size)
     }
 
     private val categoryJsonString =

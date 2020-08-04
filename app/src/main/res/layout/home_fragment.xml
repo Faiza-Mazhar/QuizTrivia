@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".homepage.HomeFragment"
-    android:paddingHorizontal="8dp">
+    android:paddingHorizontal="8dp"
+    tools:context=".homepage.HomeFragment">
 
- <Button
-     android:id="@+id/game_fragment_direct_play"
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     app:layout_constraintTop_toTopOf="parent"
-     app:layout_constraintBottom_toTopOf="@id/game_fragment_custom_play"
-     app:layout_constraintStart_toStartOf="parent"
-     app:layout_constraintEnd_toEndOf="parent"
-     android:text="@string/home_page_direct_play"/>
+    <Button
+        android:id="@+id/game_fragment_direct_play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/home_page_direct_play"
+        app:layout_constraintBottom_toTopOf="@id/game_fragment_custom_play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/game_fragment_custom_play"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/game_fragment_direct_play"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/home_fragment_custom_quiz"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/game_fragment_direct_play" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

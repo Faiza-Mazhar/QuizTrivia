@@ -6,7 +6,7 @@ import com.example.quiztrivia.optionselection.QuestionsDefinitionList
 class JsonParser {
     private val parser = MoshiService()
 
-    fun getQuestionDefinition(jsonString : String): QuestionsDefinitionList? {
+    fun questionsDefinitionList(jsonString : String): QuestionsDefinitionList? {
         return parser.fromJson(jsonString, QuestionsDefinitionList::class)
     }
 

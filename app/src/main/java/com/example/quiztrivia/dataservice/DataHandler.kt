@@ -1,9 +1,9 @@
 package com.example.quiztrivia.dataservice
 
-import com.example.quiztrivia.optionselection.CategoryDefinitionList
-import com.example.quiztrivia.optionselection.QuestionsDefinitionList
+import com.example.quiztrivia.optionselection.CategoryMetadata
+import com.example.quiztrivia.optionselection.QuestionMetadata
 
 interface DataHandler {
-    suspend fun getQuestionDefinition(urlString: String): QuestionsDefinitionList?
-    suspend fun getCategoryDefinition(urlString: String): CategoryDefinitionList?
+    suspend fun getQuestionMetadata(urlString: String): List<QuestionMetadata>
+    suspend fun getCategoryMetadata(urlString: String): List<CategoryMetadata>
 }

@@ -16,6 +16,6 @@ class QuestionDisplayFragment : Fragment(R.layout.fragment_question_display) {
         val selectedItemIndexes = QuestionDisplayFragmentArgs.fromBundle(requireArguments()).selectedIndexes
         val questionDisplayViewModel = ViewModelFactory().create(QuestionDisplayViewModel::class.java)
         val questionDisplayView = QuestionDisplayView(view)
-        val viewController = QuestionDisplayController(questionDisplayViewModel, questionDisplayView, selectedItemIndexes)
+        QuestionDisplayController(questionDisplayViewModel, questionDisplayView, selectedItemIndexes)
     }
 }

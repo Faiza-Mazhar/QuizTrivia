@@ -22,12 +22,12 @@ fun getDifficultyLevelFromIndex(index: Int): String {
 }
 
 fun getCategoryNumberFromIndex(index: Int): String {
-    return (index + 8).toString()
+    return (index + 9).toString()
 }
 
 fun getURLString(selectedItemIndexes: SelectedItemIndexes): String {
 
-    var urlString = "amount=${getNumQuestionFromIndex(
+    var urlString = "https://opentdb.com/api.php?amount=${getNumQuestionFromIndex(
         selectedItemIndexes.numOfQuestions
     )}"
 
