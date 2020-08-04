@@ -38,7 +38,7 @@ class QuestionDisplayView(private val view: View) {
         }
     }
 
-    fun bind(questionMetadata: QuestionMetadata) {
+    fun bind(questionMetadata: QuestionMetadata) = also {
         categoryName.text = questionMetadata.category
         difficultyLevel.text = convertHTMLStringToString(questionMetadata.difficulty)
         question.text = questionMetadata.question
@@ -46,6 +46,9 @@ class QuestionDisplayView(private val view: View) {
         answer2.text = questionMetadata.answers[1]
         answer3.text = questionMetadata.answers[2]
         answer4.text = questionMetadata.answers[3]
+    }
+
+    fun hideProgressbar() = also {
         loadingProgressBar.visibility = View.GONE
     }
 
