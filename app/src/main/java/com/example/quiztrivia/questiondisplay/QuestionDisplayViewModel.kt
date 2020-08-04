@@ -11,4 +11,8 @@ class QuestionDisplayViewModel (val dataManager: DataManager): ViewModel() {
 
     lateinit var questionsMetadata: List<QuestionMetadata>
 
+    var currentQuestion = 0
+
+    var correctQuestion = 0
+
 }

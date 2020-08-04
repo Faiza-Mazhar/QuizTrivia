@@ -1,10 +1,7 @@
 package com.example.quiztrivia.dataservice
 
 import com.example.quiztrivia.convertFirstLetterToUpperCase
-import com.example.quiztrivia.optionselection.CategoryDefinitionList
-import com.example.quiztrivia.optionselection.CategoryMetadata
-import com.example.quiztrivia.optionselection.QuestionMetadata
-import com.example.quiztrivia.optionselection.QuestionsDefinitionList
+import com.example.quiztrivia.optionselection.*
 import com.example.quiztrivia.replaceAnsi
 
 class DataAdapter {
@@ -20,15 +17,20 @@ class DataAdapter {
     fun convertQuestionDefinitionToQuestionMetadata(questionsDefinitionList: QuestionsDefinitionList): List<QuestionMetadata> {
         val questionMetadata = mutableListOf<QuestionMetadata>()
         for(question in questionsDefinitionList.results) {
+            val answers = shuffleAnswers(question)
             questionMetadata.add(QuestionMetadata(
                 question.category,
                 question.difficulty.convertFirstLetterToUpperCase(),
                 question.question.replaceAnsi(),
                 question.correctAnswer,
-                question.wrongAnswers
+                answers
             ))
         }
         return questionMetadata
+    }
+
+    private fun shuffleAnswers(questionsDefinition: QuestionDefinition): List<String> {
+        return listOf(questionsDefinition.correctAnswer).plus(questionsDefinition.wrongAnswers).shuffled()
     }
 
     fun convertCategoryDefinitionListToArray(categoryMetadata: List<CategoryMetadata>): Array<String?> {

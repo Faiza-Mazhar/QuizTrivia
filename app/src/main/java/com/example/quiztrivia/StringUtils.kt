@@ -8,11 +8,11 @@ fun convertHTMLStringToString(string: String): String {
 
 fun String.convertFirstLetterToUpperCase(): String {
     val char = this[0].toUpperCase()
-    return this.replace(this[0], char)
+    return this.replaceFirst(this[0], char)
 }
 
 fun String.replaceAnsi(): String {
-    val regex: Regex = Regex("[[&, a-z, 0-9]{5}:]?")
+    val regex: Regex = Regex("[[&a-z0-9]{5}:]?")
     val matches : Sequence<MatchResult> = regex.findAll(this)
     matches.forEach() {matchResult ->
         when(matchResult.value) {
