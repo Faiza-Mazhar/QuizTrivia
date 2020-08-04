@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.example.quiztrivia.homepage.HomeFragment"
         android:label="@string/home_label"
-        tools:layout="@layout/home_fragment" >
+        tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_OptionSelectionFragment"
             app:destination="@id/OptionSelectionFragment" />
@@ -35,6 +35,18 @@
         <argument
             android:name="selectedIndexes"
             app:argType="com.example.quiztrivia.optionselection.SelectedItemIndexes" />
+        <action
+            android:id="@+id/action_QuizQuestions_to_gameFinishFragment"
+            app:destination="@id/gameFinishFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFinishFragment"
+        android:name="com.example.quiztrivia.gamefinish.GameFinishFragment"
+        android:label="@string/final_score"
+        tools:layout="@layout/fragment_game_finish" >
+        <argument
+            android:name="finalScore"
+            app:argType="com.example.quiztrivia.questiondisplay.FinalScore" />
     </fragment>
 
 </navigation>

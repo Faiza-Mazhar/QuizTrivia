@@ -8,7 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.quiztrivia.R
 import com.example.quiztrivia.ViewModelFactory
 
-class HomeFragment : Fragment(R.layout.home_fragment) {
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
     companion object {
         fun newInstance() = HomeFragment()

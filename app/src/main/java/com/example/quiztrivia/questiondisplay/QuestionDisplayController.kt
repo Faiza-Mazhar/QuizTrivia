@@ -1,5 +1,6 @@
 package com.example.quiztrivia.questiondisplay
 
+import androidx.core.os.bundleOf
 import com.example.quiztrivia.R
 import com.example.quiztrivia.dataservice.getURLString
 import com.example.quiztrivia.optionselection.QuestionMetadata
@@ -44,7 +45,7 @@ class QuestionDisplayController(
     }
 
     private fun bindData(questionMetadata: QuestionMetadata) {
-        questionDisplayView.bind(questionMetadata)
+        questionDisplayView.bind(questionMetadata).hideProgressbar()
     }
 
     private fun updateCurrentQuestionDisplay() {
@@ -68,14 +69,18 @@ class QuestionDisplayController(
             bindData(questionDisplayViewModel.questionsMetadata[questionDisplayViewModel.currentQuestion])
             updateCurrentQuestionDisplay()
         } else {
-            questionDisplayView.navController.navigate(
-                R.id.homeFragment)
+            val bundle = bundleOf("finalScore" to
+                    FinalScore(
+                        questionDisplayViewModel.correctQuestion,
+                        questionDisplayViewModel.questionsMetadata.size))
+
+            questionDisplayView.navController.navigate(R.id.gameFinishFragment,bundle)
         }
     }
 
 
     private fun displayRightAnswerReply () {
-        questionDisplayView.setQuestionReply("Yeah, Correct Answer")
+        questionDisplayView.setQuestionReply("Yeah, You answer is correct")
     }
 
     private fun displayWrongAnswerReply () {

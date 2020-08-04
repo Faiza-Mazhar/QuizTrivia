@@ -1,32 +1,22 @@
 package com.example.quiztrivia.gamefinish
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.example.quiztrivia.R
+import com.example.quiztrivia.ViewModelFactory
 
-class GameFinishFragment : Fragment() {
+class GameFinishFragment : Fragment(R.layout.fragment_game_finish) {
 
     companion object {
         fun newInstance() = GameFinishFragment()
     }
-
     private lateinit var viewModel: GameFinishViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.game_finish_fragment, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val finalScore = GameFinishFragmentArgs.fromBundle(requireArguments()).finalScore
+        viewModel = ViewModelFactory().create(GameFinishViewModel::class.java)
+        GameFinishController(viewModel, GameFinishView(view), finalScore)
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(GameFinishViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }
