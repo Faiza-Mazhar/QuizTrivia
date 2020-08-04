@@ -69,6 +69,7 @@
         android:id="@+id/option_selection_start_quiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/lighterGreenWithBlackText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/option_selection_quiz_difficulty"

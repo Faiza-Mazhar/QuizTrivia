@@ -12,22 +12,22 @@
         android:id="@+id/question_display_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/question_display_difficulty"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/question_display_num_of_question"
         android:text="Category"
-        />
+        app:layout_constraintBottom_toTopOf="@id/question_display_num_of_question"
+        app:layout_constraintEnd_toStartOf="@id/question_display_difficulty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/question_display_difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/question_display_category"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/question_display_num_of_question"
         android:text="Difficulty"
-        />
+        app:layout_constraintBottom_toTopOf="@id/question_display_num_of_question"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/question_display_category"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/question_display_num_of_question"
         android:layout_width="match_parent"
@@ -96,17 +96,19 @@
     </RadioGroup>
 
     <Button
-    android:id="@+id/question_display_submit"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Submit"
-    app:layout_constraintBottom_toTopOf="@id/question_display_next"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/question_display_radio_group" />
+        android:id="@+id/question_display_submit"
+        style="@style/lighterGreenWithBlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        app:layout_constraintBottom_toTopOf="@id/question_display_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/question_display_radio_group" />
 
     <Button
         android:id="@+id/question_display_next"
+        style="@style/lighterGreenWithBlackText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next"
@@ -114,24 +116,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/question_display_submit" />
+
     <ProgressBar
         android:id="@+id/question_display_progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/question_display_answer_reply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
