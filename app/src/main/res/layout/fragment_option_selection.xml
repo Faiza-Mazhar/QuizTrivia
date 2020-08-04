@@ -75,5 +75,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/option_selection_start_quiz_button" />
 
-
+    <ProgressBar
+        android:id="@+id/option_selection_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,11 @@
 package com.example.quiztrivia.dataservice
 
+import com.example.quiztrivia.convertFirstLetterToUpperCase
 import com.example.quiztrivia.optionselection.CategoryDefinitionList
 import com.example.quiztrivia.optionselection.CategoryMetadata
 import com.example.quiztrivia.optionselection.QuestionMetadata
 import com.example.quiztrivia.optionselection.QuestionsDefinitionList
+import com.example.quiztrivia.replaceAnsi
 
 class DataAdapter {
 
@@ -20,15 +22,14 @@ class DataAdapter {
         for(question in questionsDefinitionList.results) {
             questionMetadata.add(QuestionMetadata(
                 question.category,
-                question.difficulty,
-                question.question,
+                question.difficulty.convertFirstLetterToUpperCase(),
+                question.question.replaceAnsi(),
                 question.correctAnswer,
                 question.wrongAnswers
             ))
         }
         return questionMetadata
     }
-
 
     fun convertCategoryDefinitionListToArray(categoryMetadata: List<CategoryMetadata>): Array<String?> {
         val categories = arrayOfNulls<String>(categoryMetadata.size)

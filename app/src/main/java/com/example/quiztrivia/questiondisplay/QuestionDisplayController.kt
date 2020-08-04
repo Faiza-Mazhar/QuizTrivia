@@ -1,11 +1,14 @@
 package com.example.quiztrivia.questiondisplay
 
 import com.example.quiztrivia.dataservice.getURLString
+import com.example.quiztrivia.optionselection.QuestionMetadata
 import com.example.quiztrivia.optionselection.SelectedItemIndexes
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+@ExperimentalCoroutinesApi
 class QuestionDisplayController(
     private val questionDisplayViewModel: QuestionDisplayViewModel,
     private val questionDisplayView: QuestionDisplayView,
@@ -22,7 +25,14 @@ class QuestionDisplayController(
             withContext(Dispatchers.IO) {
                 questionDisplayViewModel.questionsMetadata = questionDisplayViewModel.dataManager.getQuestionsMetadata(urlString)
             }
+
+            bindData(questionDisplayViewModel.questionsMetadata[0])
+            questionDisplayView.setNumOfQuestion(0, questionDisplayViewModel.questionsMetadata.size)
         }
+    }
+
+    private fun bindData(questionMetadata: QuestionMetadata) {
+        questionDisplayView.bind(questionMetadata)
     }
 
 }
