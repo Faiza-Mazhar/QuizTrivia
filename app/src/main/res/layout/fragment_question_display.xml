@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="8dp"
+    style="@style/fragmentBackground"
     tools:context=".questiondisplay.QuestionDisplayFragment">
 
 
