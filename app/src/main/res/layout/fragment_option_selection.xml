@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/fragmentBackground"
-    tools:context=".optionselection.OptionSelectionFragment"
-    android:paddingHorizontal="8dp">
+    tools:context=".optionselection.OptionSelectionFragment">
 
 
     <TextView

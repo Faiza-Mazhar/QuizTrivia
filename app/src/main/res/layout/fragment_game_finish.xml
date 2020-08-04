@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     style="@style/fragmentBackground"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".gamefinish.GameFinishFragment">
+    tools:context=".gamefinish.GameFinishFragment"
+    android:paddingVertical="8dp">
 
     <TextView
         android:id="@+id/game_finish_final_score"
@@ -25,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/start_again"
+        android:paddingVertical="8dp"
         style="@style/text_olive_bold_centre_light_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

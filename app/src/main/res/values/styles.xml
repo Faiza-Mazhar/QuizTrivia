@@ -35,6 +35,8 @@
 
     <style name="fragmentBackground">
         <item name="android:background">@color/moreLightestGreen</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingVertical">4dp</item>
     </style>
 
     <style name="spinner_title" parent="text_oliveGreen">
