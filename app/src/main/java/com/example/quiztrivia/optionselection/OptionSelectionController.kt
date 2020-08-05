@@ -20,6 +20,9 @@ class OptionSelectionController (private val optionSelectionViewModel: OptionSel
 
         optionSelectionView.setPlayQuizClickListener {
             optionSelectionViewModel.setIndexes( getNumberOfQuestionsIndex(), getCategoryIndex(), getDifficultyLevelIndex())
+            optionSelectionView.navController.navigate(OptionSelectionFragmentDirections.actionOptionSelectionFragmentToQuizQuestions(
+                optionSelectionViewModel.selectedItemIndexes
+            ))
         }
     }
 

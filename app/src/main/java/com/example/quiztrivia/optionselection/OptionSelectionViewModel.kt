@@ -1,7 +1,6 @@
 package com.example.quiztrivia.optionselection
 
 import android.os.Parcelable
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.quiztrivia.dataservice.DataManager
@@ -9,14 +8,16 @@ import kotlinx.android.parcel.Parcelize
 
 class OptionSelectionViewModel(val dataManager: DataManager): ViewModel() {
 
-    var selectedItemIndexes =  MutableLiveData<SelectedItemIndexes>()
+    var selectedItemIndexes = SelectedItemIndexes()
     val coroutineScope = viewModelScope
     lateinit var categoriesMetadata: List<CategoryMetadata>
     var categoryArray: Array<String?>? = null
 
     fun setIndexes(numOfQuestionIndex: Int, categoryIndex: Int, difficultyLevel:Int) {
-        selectedItemIndexes.value = SelectedItemIndexes(numOfQuestionIndex, categoryIndex, difficultyLevel)
+        selectedItemIndexes = SelectedItemIndexes(numOfQuestionIndex, categoryIndex, difficultyLevel)
     }
+
+
 }
 @Parcelize
 data class SelectedItemIndexes(
