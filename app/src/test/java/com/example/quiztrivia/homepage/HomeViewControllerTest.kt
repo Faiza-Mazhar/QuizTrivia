@@ -1,10 +1,8 @@
 package com.example.quiztrivia.homepage
 
-import androidx.navigation.NavController
 import com.example.quiztrivia.optionselection.SelectedItemIndexes
 import com.nhaarman.mockito_kotlin.argumentCaptor
 import com.nhaarman.mockito_kotlin.verify
-import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -13,11 +11,9 @@ import org.mockito.MockitoAnnotations
 class HomeViewControllerTest {
     @Mock private lateinit var mockViewModel: HomeViewModel
     @Mock private lateinit var mockHomeView: HomeView
-    @Mock private lateinit var mockNavigation: NavController
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        whenever(mockHomeView.navController).thenReturn(mockNavigation)
         HomeViewController(mockViewModel, mockHomeView)
     }
 

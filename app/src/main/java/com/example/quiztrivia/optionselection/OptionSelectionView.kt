@@ -16,7 +16,7 @@ class OptionSelectionView (private val view: View) {
     private val startQuiz: Button = view.findViewById(R.id.option_selection_start_quiz)
     private val progressBar: ProgressBar = view.findViewById(R.id.option_selection_progressBar)
 
-    val navController = view.findNavController()
+    private val navController = view.findNavController()
 
     fun setPlayQuizClickListener(listener: () -> Unit) {
         startQuiz.setOnClickListener {
@@ -24,7 +24,7 @@ class OptionSelectionView (private val view: View) {
         }
     }
 
-    fun naviagteToQuestionDisplayFragment(selectedItemIndexes: SelectedItemIndexes) {
+    fun navigateToQuestionDisplayFragment(selectedItemIndexes: SelectedItemIndexes) {
         navController.navigate(OptionSelectionFragmentDirections.actionOptionSelectionFragmentToQuizQuestions(
             selectedItemIndexes
         ))

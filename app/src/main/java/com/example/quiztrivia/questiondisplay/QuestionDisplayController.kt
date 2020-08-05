@@ -33,12 +33,8 @@ class QuestionDisplayController(
         }
 
         questionDisplayView.setTryAgainButtonClickListener {
-            retryAgain()
+            questionDisplayView.navigateToItSelf(selectedIndexes)
         }
-    }
-
-    private fun retryAgain() {
-        questionDisplayView.navController.navigate(QuestionDisplayFragmentDirections.actionQuizQuestionsSelf(selectedIndexes))
     }
 
     private fun getQuestionMetadata() {
@@ -103,10 +99,7 @@ class QuestionDisplayController(
             questionDisplayViewModel.correctQuestion,
             questionDisplayViewModel.questionsMetadata.size
         )
-
-        questionDisplayView.navController.navigate(
-            QuestionDisplayFragmentDirections.actionQuizQuestionsToGameFinishFragment(finalScore)
-        )
+        questionDisplayView.navigateToGameFinish(finalScore)
     }
 
 

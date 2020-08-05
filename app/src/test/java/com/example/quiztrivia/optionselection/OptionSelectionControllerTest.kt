@@ -1,10 +1,7 @@
 package com.example.quiztrivia.optionselection
 
 import android.widget.Spinner
-import com.nhaarman.mockito_kotlin.argumentCaptor
-import com.nhaarman.mockito_kotlin.mock
-import com.nhaarman.mockito_kotlin.verify
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockito_kotlin.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -28,7 +25,6 @@ class OptionSelectionControllerTest {
     fun `when user click on play quiz button, selected category, selected number of question and selected difficulty level are updated` () = runBlocking{
 
         whenever(mockViewModel.coroutineScope).thenReturn(this)
-        whenever(mockOptionSelectionView.navController).thenReturn(mock())
         whenever(mockViewModel.dataManager).thenReturn(mock())
         whenever(mockViewModel.categoryArray).thenReturn(arrayOf("category"))
         whenever(mockViewModel.selectedItemIndexes).thenReturn(mock())
@@ -47,7 +43,7 @@ class OptionSelectionControllerTest {
         playQuizClickCaptor.firstValue.invoke()
 
         verify(mockViewModel).setIndexes(expectedIndex, expectedIndex, expectedIndex)
-        verify(mockOptionSelectionView).naviagteToQuestionDisplayFragment(mockViewModel.selectedItemIndexes)
+        verify(mockOptionSelectionView, times(1)).navigateToQuestionDisplayFragment(mockViewModel.selectedItemIndexes)
     }
 
 }

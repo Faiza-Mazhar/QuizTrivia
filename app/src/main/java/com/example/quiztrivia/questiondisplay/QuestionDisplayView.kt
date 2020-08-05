@@ -6,6 +6,7 @@ import androidx.navigation.findNavController
 import com.example.quiztrivia.R
 import com.example.quiztrivia.convertHTMLStringToString
 import com.example.quiztrivia.optionselection.QuestionMetadata
+import com.example.quiztrivia.optionselection.SelectedItemIndexes
 
 class QuestionDisplayView(private val view: View) {
 
@@ -23,8 +24,7 @@ class QuestionDisplayView(private val view: View) {
     private val loadingProgressBar: ProgressBar = view.findViewById(R.id.question_display_progressBar)
     private val reply: TextView = view.findViewById(R.id.question_display_answer_reply)
     private val tryAgain: Button = view.findViewById(R.id.question_display_retry)
-
-    val navController = view.findNavController()
+    private val navController = view.findNavController()
 
 
     fun setSubmitButtonClickListener (listener: () -> Unit) {
@@ -43,6 +43,16 @@ class QuestionDisplayView(private val view: View) {
         tryAgain.setOnClickListener {
             listener.invoke()
         }
+    }
+
+    fun navigateToItSelf(selectedItemIndexes: SelectedItemIndexes) {
+        navController.navigate(QuestionDisplayFragmentDirections.actionQuizQuestionsSelf(selectedItemIndexes))
+    }
+
+    fun navigateToGameFinish(finalScore: FinalScore) {
+        navController.navigate(
+            QuestionDisplayFragmentDirections.actionQuizQuestionsToGameFinishFragment(finalScore)
+        )
     }
 
     fun bind(questionMetadata: QuestionMetadata) = also {
