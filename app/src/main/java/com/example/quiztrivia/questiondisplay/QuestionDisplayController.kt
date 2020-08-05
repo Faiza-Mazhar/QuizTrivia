@@ -1,7 +1,5 @@
 package com.example.quiztrivia.questiondisplay
 
-import androidx.core.os.bundleOf
-import com.example.quiztrivia.R
 import com.example.quiztrivia.dataservice.getURLString
 import com.example.quiztrivia.optionselection.QuestionMetadata
 import com.example.quiztrivia.optionselection.SelectedItemIndexes
@@ -14,11 +12,17 @@ import kotlinx.coroutines.withContext
 class QuestionDisplayController(
     private val questionDisplayViewModel: QuestionDisplayViewModel,
     private val questionDisplayView: QuestionDisplayView,
-    selectedIndexes: SelectedItemIndexes
+    private val selectedIndexes: SelectedItemIndexes
     ) {
 
     private var urlString: String = getURLString(selectedIndexes)
     init {
+
+        questionDisplayView
+            .hideQA()
+            .hideSubmitButton()
+            .hideNumQuestion()
+
         getQuestionMetadata()
         questionDisplayView.setSubmitButtonClickListener {
             submitAnswer()
@@ -27,6 +31,14 @@ class QuestionDisplayController(
         questionDisplayView.setNextButtonClickListener {
             nextQuestion()
         }
+
+        questionDisplayView.setTryAgainButtonClickListener {
+            retryAgain()
+        }
+    }
+
+    private fun retryAgain() {
+        questionDisplayView.navController.navigate(QuestionDisplayFragmentDirections.actionQuizQuestionsSelf(selectedIndexes))
     }
 
     private fun getQuestionMetadata() {
@@ -36,10 +48,19 @@ class QuestionDisplayController(
             }
 
             if(questionDisplayViewModel.questionsMetadata.isNotEmpty()) {
+                questionDisplayView
+                    .showQA()
+                    .showSubmitButton()
+                    .showNumQuestion()
+
                 bindData(questionDisplayViewModel.questionsMetadata[questionDisplayViewModel.currentQuestion])
                 updateCurrentQuestionDisplay()
             } else {
-                TODO()
+                questionDisplayView
+                    .hideQA()
+                    .hideProgressbar()
+                    .hideSubmitButton()
+                    .showTryAgainButton()
             }
         }
     }
@@ -71,12 +92,11 @@ class QuestionDisplayController(
             updateCurrentQuestionDisplay()
             questionDisplayView.showSubmitButton().hideNextButton()
         } else {
-            val bundle = bundleOf("finalScore" to
-                    FinalScore(
+            val finalScore = FinalScore(
                         questionDisplayViewModel.correctQuestion,
-                        questionDisplayViewModel.questionsMetadata.size))
+                        questionDisplayViewModel.questionsMetadata.size)
 
-            questionDisplayView.navController.navigate(R.id.gameFinishFragment,bundle)
+            questionDisplayView.navController.navigate(QuestionDisplayFragmentDirections.actionQuizQuestionsToGameFinishFragment(finalScore))
         }
     }
 

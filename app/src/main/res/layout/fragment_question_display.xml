@@ -133,4 +133,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/question_display_retry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/text_olive_bold_centre_light_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/question_display_category_difficulty_info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/please_try_again"
+        android:visibility="gone"
+       />
 </androidx.constraintlayout.widget.ConstraintLayout>
