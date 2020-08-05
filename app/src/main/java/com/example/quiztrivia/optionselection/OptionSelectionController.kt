@@ -10,8 +10,6 @@ import kotlinx.coroutines.withContext
 class OptionSelectionController (private val optionSelectionViewModel: OptionSelectionViewModel,
                                  private val optionSelectionView: OptionSelectionView) {
 
-
-
     init {
         getCategoryDefinitionList()
 
@@ -20,10 +18,16 @@ class OptionSelectionController (private val optionSelectionViewModel: OptionSel
 
         optionSelectionView.setPlayQuizClickListener {
             optionSelectionViewModel.setIndexes( getNumberOfQuestionsIndex(), getCategoryIndex(), getDifficultyLevelIndex())
-            optionSelectionView.navController.navigate(OptionSelectionFragmentDirections.actionOptionSelectionFragmentToQuizQuestions(
-                optionSelectionViewModel.selectedItemIndexes
-            ))
+            navigateToQuestionsDisplayFragment()
         }
+    }
+
+    private fun navigateToQuestionsDisplayFragment() {
+        optionSelectionView.navController.navigate(
+            OptionSelectionFragmentDirections.actionOptionSelectionFragmentToQuizQuestions(
+                optionSelectionViewModel.selectedItemIndexes
+            )
+        )
     }
 
     private fun getCategoryDefinitionList() {
