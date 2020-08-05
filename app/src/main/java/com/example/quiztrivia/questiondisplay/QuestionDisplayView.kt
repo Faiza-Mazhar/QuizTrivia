@@ -53,7 +53,7 @@ class QuestionDisplayView(private val view: View) {
     }
 
     fun setNumOfQuestion(currentQuestionNumber: Int, totalQuestions: Int ) {
-        val text = "$currentQuestionNumber / $totalQuestions"
+        val text = "Question: $currentQuestionNumber / $totalQuestions"
         numOfQuestion.text = text
     }
 
@@ -81,5 +81,19 @@ class QuestionDisplayView(private val view: View) {
         radioGroup.visibility = View.VISIBLE
     }
 
+    fun hideSubmitButton() = also {
+        submitButton.visibility = View.GONE
+    }
 
+    fun showSubmitButton() = also {
+        submitButton.visibility = View.VISIBLE
+    }
+
+    fun hideNextButton() = also {
+        nextButton.visibility = View.GONE
+    }
+
+    fun showNextButton() = also {
+        nextButton.visibility = View.VISIBLE
+    }
 }

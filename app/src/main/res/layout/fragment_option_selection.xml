@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".optionselection.OptionSelectionFragment"
-    android:paddingHorizontal="8dp">
+    style="@style/fragmentBackground"
+    tools:context=".optionselection.OptionSelectionFragment">
+
 
     <TextView
         android:id="@+id/option_selection_categories_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/spinner_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -30,6 +32,7 @@
         android:id="@+id/option_selection_num_of_questions_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/spinner_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/option_selection_categories"
@@ -49,6 +52,7 @@
         android:id="@+id/option_selection_quiz_difficulty_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/spinner_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/option_selection_num_of_questions"
@@ -59,6 +63,7 @@
         android:id="@+id/option_selection_quiz_difficulty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:popupBackground="@color/lightestGreen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/option_selection_quiz_difficulty_text"
@@ -67,8 +72,9 @@
 
     <Button
         android:id="@+id/option_selection_start_quiz"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/text_olive_bold_centre_light_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/option_selection_quiz_difficulty"

@@ -3,25 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/fragmentBackground"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".gamefinish.GameFinishFragment">
+    tools:context=".gamefinish.GameFinishFragment"
+    android:paddingVertical="8dp">
 
     <TextView
         android:id="@+id/game_finish_final_score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        style="@style/text_olive_bold_centre"
+        android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintBottom_toTopOf="@id/game_finish_start_again"
+        app:layout_constraintBottom_toTopOf="@id/game_finish_start_again"
         android:text="@string/score" />
 
     <Button
         android:id="@+id/game_finish_start_again"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/start_again"
+        android:paddingVertical="8dp"
+        style="@style/text_olive_bold_centre_light_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/game_finish_final_score"

@@ -16,4 +16,43 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="text_oliveGreen" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/oliveGreen</item>
+    </style>
+
+    <style name="text_olive_bold" parent="text_oliveGreen">
+        <item name ="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_olive_bold_centre" parent="text_oliveGreen">
+        <item name ="android:textStyle">bold</item>
+        <item name ="android:textAlignment">center</item>
+    </style>
+
+    <style name="text_olive_bold_centre_light_background" parent="text_olive_bold_centre">
+        <item name="android:background">@color/lighterGreen</item>
+    </style>
+
+    <style name="fragmentBackground">
+        <item name="android:background">@color/moreLightestGreen</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingVertical">4dp</item>
+    </style>
+
+    <style name="spinner_title" parent="text_oliveGreen">
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="spinner_style" parent="text_oliveGreen">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingStart">2dp</item>
+        <item name="android:paddingEnd">2dp</item>
+        <item name="android:layout_marginHorizontal">4dp</item>
+        <item name="android:layout_marginVertical">4dp</item>
+        <item name="android:background">@color/lightestGreen</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

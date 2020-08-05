@@ -22,7 +22,7 @@ class OptionSelectionView (private val view: View) {
     }
 
     fun populateCategoriesSpinner(categoriesArray: Array<String?>) {
-        val arrayAdapter = ArrayAdapter<String>(view.context,android.R.layout.simple_spinner_dropdown_item, categoriesArray)
+        val arrayAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_spinner_dropdown_item, categoriesArray)
         categories.adapter = arrayAdapter
         progressBar.visibility = View.GONE
 
