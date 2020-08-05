@@ -1,14 +1,27 @@
 package com.example.quiztrivia.homepage
 
-class HomeViewController(viewModel: HomeViewModel, homeView: HomeView) {
+import com.example.quiztrivia.optionselection.SelectedItemIndexes
+
+class HomeViewController(private val viewModel: HomeViewModel, private val homeView: HomeView) {
 
     init {
         homeView.setCustomPlayListener {
-            viewModel.navigateToCustomPlay.value = true
+            navigateToOptionSelectionFragment()
         }
 
         homeView.setDirectPlayListener {
-            viewModel.navigateToDirectPlay.value = true
+            navigateToQuestionDisplayFragment()
         }
     }
+
+    private fun navigateToQuestionDisplayFragment() {
+        homeView.navController.navigate(HomeFragmentDirections.actionHomeFragmentToQuizQuestions(
+            SelectedItemIndexes()
+        ))
+    }
+
+    private fun navigateToOptionSelectionFragment() {
+        homeView.navController.navigate(HomeFragmentDirections.actionHomeFragmentToOptionSelectionFragment())
+    }
 }
+

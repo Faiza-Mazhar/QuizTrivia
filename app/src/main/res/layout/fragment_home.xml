@@ -8,7 +8,7 @@
     tools:context=".homepage.HomeFragment">
 
     <Button
-        android:id="@+id/game_fragment_direct_play"
+        android:id="@+id/home_fragment_direct_play"
         style="@style/text_olive_bold_centre_light_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,28 +16,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/game_fragment_space"
+        app:layout_constraintBottom_toTopOf="@id/home_fragment_space"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.legacy.widget.Space
-        android:id="@+id/game_fragment_space"
+        android:id="@+id/home_fragment_space"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_fragment_direct_play"
-        app:layout_constraintBottom_toTopOf="@id/game_fragment_custom_play"/>
+        app:layout_constraintTop_toBottomOf="@+id/home_fragment_direct_play"
+        app:layout_constraintBottom_toTopOf="@id/home_fragment_custom_play"/>
 
     <Button
-        android:id="@+id/game_fragment_custom_play"
+        android:id="@+id/home_fragment_custom_play"
         style="@style/text_olive_bold_centre_light_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/home_fragment_custom_quiz"
-        app:layout_constraintTop_toBottomOf="@id/game_fragment_space"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_fragment_space"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         />
 
 
