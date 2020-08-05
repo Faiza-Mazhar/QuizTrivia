@@ -24,6 +24,12 @@ class OptionSelectionView (private val view: View) {
         }
     }
 
+    fun naviagteToQuestionDisplayFragment(selectedItemIndexes: SelectedItemIndexes) {
+        navController.navigate(OptionSelectionFragmentDirections.actionOptionSelectionFragmentToQuizQuestions(
+            selectedItemIndexes
+        ))
+    }
+
     fun populateCategoriesSpinner(categoriesArray: Array<String?>) {
         val arrayAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_spinner_dropdown_item, categoriesArray)
         categories.adapter = arrayAdapter

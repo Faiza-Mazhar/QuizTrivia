@@ -28,6 +28,11 @@ class OptionSelectionControllerTest {
     fun `when user click on play quiz button, selected category, selected number of question and selected difficulty level are updated` () = runBlocking{
 
         whenever(mockViewModel.coroutineScope).thenReturn(this)
+        whenever(mockOptionSelectionView.navController).thenReturn(mock())
+        whenever(mockViewModel.dataManager).thenReturn(mock())
+        whenever(mockViewModel.categoryArray).thenReturn(arrayOf("category"))
+        whenever(mockViewModel.selectedItemIndexes).thenReturn(mock())
+
         val playQuizClickCaptor = argumentCaptor< () -> Unit>()
         val mockSpinner = mock<Spinner>()
 
@@ -38,10 +43,11 @@ class OptionSelectionControllerTest {
         whenever(mockOptionSelectionView.quizDifficultyLevel).thenReturn(mockSpinner)
 
         OptionSelectionController(mockViewModel, mockOptionSelectionView)
-
         verify(mockOptionSelectionView).setPlayQuizClickListener(playQuizClickCaptor.capture())
         playQuizClickCaptor.firstValue.invoke()
 
         verify(mockViewModel).setIndexes(expectedIndex, expectedIndex, expectedIndex)
+        verify(mockOptionSelectionView).naviagteToQuestionDisplayFragment(mockViewModel.selectedItemIndexes)
     }
+
 }
