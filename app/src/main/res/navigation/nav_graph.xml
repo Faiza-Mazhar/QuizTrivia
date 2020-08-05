@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_QuizQuestions_to_gameFinishFragment"
             app:destination="@id/gameFinishFragment" />
+        <action
+            android:id="@+id/action_QuizQuestions_self"
+            app:destination="@id/QuizQuestions" />
     </fragment>
     <fragment
         android:id="@+id/gameFinishFragment"

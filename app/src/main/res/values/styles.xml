@@ -29,6 +29,9 @@
         <item name ="android:textAlignment">center</item>
     </style>
 
+    <style name="text_olive_bold_centre_big" parent="text_olive_bold_centre">
+        <item name= "android:textSize">20sp</item>
+    </style>
     <style name="text_olive_bold_centre_light_background" parent="text_olive_bold_centre">
         <item name="android:background">@color/lighterGreen</item>
     </style>

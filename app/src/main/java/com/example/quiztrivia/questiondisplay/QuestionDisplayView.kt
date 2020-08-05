@@ -22,6 +22,7 @@ class QuestionDisplayView(private val view: View) {
     private val nextButton: Button = view.findViewById(R.id.question_display_next)
     private val loadingProgressBar: ProgressBar = view.findViewById(R.id.question_display_progressBar)
     private val reply: TextView = view.findViewById(R.id.question_display_answer_reply)
+    private val tryAgain: Button = view.findViewById(R.id.question_display_retry)
 
     val navController = view.findNavController()
 
@@ -38,6 +39,12 @@ class QuestionDisplayView(private val view: View) {
         }
     }
 
+    fun setTryAgainButtonClickListener (listener: () -> Unit) {
+        tryAgain.setOnClickListener {
+            listener.invoke()
+        }
+    }
+
     fun bind(questionMetadata: QuestionMetadata) = also {
         categoryName.text = questionMetadata.category
         difficultyLevel.text = convertHTMLStringToString(questionMetadata.difficulty)
@@ -46,10 +53,6 @@ class QuestionDisplayView(private val view: View) {
         answer2.text = questionMetadata.answers[1]
         answer3.text = questionMetadata.answers[2]
         answer4.text = questionMetadata.answers[3]
-    }
-
-    fun hideProgressbar() = also {
-        loadingProgressBar.visibility = View.GONE
     }
 
     fun setNumOfQuestion(currentQuestionNumber: Int, totalQuestions: Int ) {
@@ -62,9 +65,13 @@ class QuestionDisplayView(private val view: View) {
         return view.findViewById<RadioButton>(id).text.toString()
     }
 
-    fun setQuestionReply(string: String) {
+    fun setQuestionReply(string: String) = also {
         reply.text = string
         reply.visibility = View.VISIBLE
+    }
+
+    fun hideProgressbar() = also {
+        loadingProgressBar.visibility = View.GONE
     }
 
     fun hideQuestionReply() = also {
@@ -96,4 +103,18 @@ class QuestionDisplayView(private val view: View) {
     fun showNextButton() = also {
         nextButton.visibility = View.VISIBLE
     }
+
+    fun showTryAgainButton() = also {
+        tryAgain.visibility = View.VISIBLE
+    }
+
+    fun hideNumQuestion() = also {
+        numOfQuestion.visibility = View.GONE
+    }
+
+    fun showNumQuestion() = also {
+        numOfQuestion.visibility = View.VISIBLE
+    }
+
+
 }
