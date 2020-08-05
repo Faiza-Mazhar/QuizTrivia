@@ -7,8 +7,8 @@ import com.example.quiztrivia.R
 
 class HomeView(view: View) {
 
-    private val directPlay: Button = view.findViewById(R.id.game_fragment_direct_play)
-    private val customPlay: Button = view.findViewById(R.id.game_fragment_custom_play)
+    private val directPlay: Button = view.findViewById(R.id.home_fragment_direct_play)
+    private val customPlay: Button = view.findViewById(R.id.home_fragment_custom_play)
     val navController = view.findNavController()
 
     fun setDirectPlayListener(listener  : () -> Unit) {
