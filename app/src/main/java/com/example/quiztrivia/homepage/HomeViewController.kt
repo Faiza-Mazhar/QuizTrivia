@@ -2,7 +2,7 @@ package com.example.quiztrivia.homepage
 
 import com.example.quiztrivia.optionselection.SelectedItemIndexes
 
-class HomeViewController(private val viewModel: HomeViewModel, private val homeView: HomeView) {
+class HomeViewController(viewModel: HomeViewModel, private val homeView: HomeView) {
 
     init {
         homeView.setCustomPlayListener {
@@ -15,13 +15,11 @@ class HomeViewController(private val viewModel: HomeViewModel, private val homeV
     }
 
     private fun navigateToQuestionDisplayFragment() {
-        homeView.navController.navigate(HomeFragmentDirections.actionHomeFragmentToQuizQuestions(
-            SelectedItemIndexes()
-        ))
+        homeView.navigateToQuestionDisplayFragment(SelectedItemIndexes())
     }
 
     private fun navigateToOptionSelectionFragment() {
-        homeView.navController.navigate(HomeFragmentDirections.actionHomeFragmentToOptionSelectionFragment())
+        homeView.navigateToOptionSelectionFragment()
     }
 }
 

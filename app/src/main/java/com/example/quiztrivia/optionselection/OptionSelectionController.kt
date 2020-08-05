@@ -10,20 +10,22 @@ import kotlinx.coroutines.withContext
 class OptionSelectionController (private val optionSelectionViewModel: OptionSelectionViewModel,
                                  private val optionSelectionView: OptionSelectionView) {
 
-
-
-    init {
-        getCategoryDefinitionList()
-
+    init{
+        setupView()
         optionSelectionView.populateNumOfQuestionSpinner()
         optionSelectionView.populateQuizDifficultyLevelSpinner()
 
         optionSelectionView.setPlayQuizClickListener {
             optionSelectionViewModel.setIndexes( getNumberOfQuestionsIndex(), getCategoryIndex(), getDifficultyLevelIndex())
+            navigateToQuestionsDisplayFragment()
         }
     }
 
-    private fun getCategoryDefinitionList() {
+    private fun navigateToQuestionsDisplayFragment() {
+        optionSelectionView.naviagteToQuestionDisplayFragment(optionSelectionViewModel.selectedItemIndexes)
+    }
+
+    private fun setupView() {
         optionSelectionViewModel.coroutineScope.launch {
             withContext(Dispatchers.IO){
                 optionSelectionViewModel.categoriesMetadata = optionSelectionViewModel.dataManager.getCategoriesMetadata()

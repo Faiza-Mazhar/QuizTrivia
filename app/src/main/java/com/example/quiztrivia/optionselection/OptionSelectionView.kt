@@ -5,6 +5,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Spinner
+import androidx.navigation.findNavController
 import com.example.quiztrivia.R
 
 class OptionSelectionView (private val view: View) {
@@ -15,10 +16,18 @@ class OptionSelectionView (private val view: View) {
     private val startQuiz: Button = view.findViewById(R.id.option_selection_start_quiz)
     private val progressBar: ProgressBar = view.findViewById(R.id.option_selection_progressBar)
 
+    val navController = view.findNavController()
+
     fun setPlayQuizClickListener(listener: () -> Unit) {
         startQuiz.setOnClickListener {
             listener.invoke()
         }
+    }
+
+    fun naviagteToQuestionDisplayFragment(selectedItemIndexes: SelectedItemIndexes) {
+        navController.navigate(OptionSelectionFragmentDirections.actionOptionSelectionFragmentToQuizQuestions(
+            selectedItemIndexes
+        ))
     }
 
     fun populateCategoriesSpinner(categoriesArray: Array<String?>) {
