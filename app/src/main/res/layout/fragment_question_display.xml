@@ -34,8 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="8dp"
-        style="@style/text_olive_bold_centre"
-        android:textSize="20sp"
+        style="@style/text_olive_bold_centre_big"
+
         android:text="Here is my question"
         app:layout_constraintBottom_toTopOf="@id/question_display_radio_group"
         app:layout_constraintEnd_toEndOf="parent"
@@ -126,13 +126,14 @@
         android:id="@+id/question_display_answer_reply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/text_olive_bold_centre"
-        android:text="TextView"
+        style="@style/text_olive_bold_centre_big"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/question_display_radio_group"
+        app:layout_constraintBottom_toTopOf="@id/question_display_next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
+
     <Button
         android:id="@+id/question_display_retry"
         android:layout_width="match_parent"

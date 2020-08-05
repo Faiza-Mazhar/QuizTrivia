@@ -46,22 +46,25 @@ class QuestionDisplayController(
             withContext(Dispatchers.IO) {
                 questionDisplayViewModel.questionsMetadata = questionDisplayViewModel.dataManager.getQuestionsMetadata(urlString)
             }
+            setupDisplay()
+        }
+    }
 
-            if(questionDisplayViewModel.questionsMetadata.isNotEmpty()) {
-                questionDisplayView
-                    .showQA()
-                    .showSubmitButton()
-                    .showNumQuestion()
+    private fun setupDisplay() {
+        if (questionDisplayViewModel.questionsMetadata.isNotEmpty()) {
+            questionDisplayView
+                .showQA()
+                .showSubmitButton()
+                .showNumQuestion()
 
-                bindData(questionDisplayViewModel.questionsMetadata[questionDisplayViewModel.currentQuestion])
-                updateCurrentQuestionDisplay()
-            } else {
-                questionDisplayView
-                    .hideQA()
-                    .hideProgressbar()
-                    .hideSubmitButton()
-                    .showTryAgainButton()
-            }
+            bindData(questionDisplayViewModel.questionsMetadata[questionDisplayViewModel.currentQuestion])
+            updateCurrentQuestionDisplay()
+        } else {
+            questionDisplayView
+                .hideQA()
+                .hideProgressbar()
+                .hideSubmitButton()
+                .showTryAgainButton()
         }
     }
 
@@ -74,7 +77,6 @@ class QuestionDisplayController(
     }
 
     private fun submitAnswer() {
-        questionDisplayView.hideQA()
         if(checkAnswer()){
                 questionDisplayViewModel.correctQuestion++
                 displayRightAnswerReply()
@@ -92,12 +94,19 @@ class QuestionDisplayController(
             updateCurrentQuestionDisplay()
             questionDisplayView.showSubmitButton().hideNextButton()
         } else {
-            val finalScore = FinalScore(
-                        questionDisplayViewModel.correctQuestion,
-                        questionDisplayViewModel.questionsMetadata.size)
-
-            questionDisplayView.navController.navigate(QuestionDisplayFragmentDirections.actionQuizQuestionsToGameFinishFragment(finalScore))
+            navigateToGameFinish()
         }
+    }
+
+    private fun navigateToGameFinish() {
+        val finalScore = FinalScore(
+            questionDisplayViewModel.correctQuestion,
+            questionDisplayViewModel.questionsMetadata.size
+        )
+
+        questionDisplayView.navController.navigate(
+            QuestionDisplayFragmentDirections.actionQuizQuestionsToGameFinishFragment(finalScore)
+        )
     }
 
 

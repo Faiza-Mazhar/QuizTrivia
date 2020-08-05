@@ -104,10 +104,6 @@ class QuestionDisplayView(private val view: View) {
         nextButton.visibility = View.VISIBLE
     }
 
-    fun hideTryAgainButton() = also {
-        tryAgain.visibility = View.GONE
-    }
-
     fun showTryAgainButton() = also {
         tryAgain.visibility = View.VISIBLE
     }
