@@ -1,8 +1,7 @@
 package com.example.quiztrivia.dataservice
 
-import com.example.quiztrivia.convertFirstLetterToUpperCase
 import com.example.quiztrivia.optionselection.*
-import com.example.quiztrivia.replaceAnsi
+import com.example.quiztrivia.replaceHtmlEntities
 
 class DataAdapter {
 
@@ -20,10 +19,10 @@ class DataAdapter {
             val answers = shuffleAnswers(question)
             questionMetadata.add(QuestionMetadata(
                 question.category,
-                question.difficulty.convertFirstLetterToUpperCase(),
-                question.question.replaceAnsi(),
-                question.correctAnswer,
-                answers
+                question.difficulty,
+                replaceHtmlEntities(question.question),
+                replaceHtmlEntities(question.correctAnswer),
+                replaceHTMLEntitiesForAnswers(answers)
             ))
         }
         return questionMetadata
@@ -31,6 +30,13 @@ class DataAdapter {
 
     private fun shuffleAnswers(questionsDefinition: QuestionDefinition): List<String> {
         return listOf(questionsDefinition.correctAnswer).plus(questionsDefinition.wrongAnswers).shuffled()
+    }
+
+    private fun replaceHTMLEntitiesForAnswers(answers: List<String>): List<String>{
+        answers.forEach { answer ->
+            replaceHtmlEntities(answer)
+        }
+        return answers
     }
 
     fun convertCategoryDefinitionListToArray(categoryMetadata: List<CategoryMetadata>): Array<String?> {

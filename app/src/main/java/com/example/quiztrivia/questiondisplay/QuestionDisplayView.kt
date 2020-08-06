@@ -4,7 +4,6 @@ import android.view.View
 import android.widget.*
 import androidx.navigation.findNavController
 import com.example.quiztrivia.R
-import com.example.quiztrivia.convertHTMLStringToString
 import com.example.quiztrivia.optionselection.QuestionMetadata
 import com.example.quiztrivia.optionselection.SelectedItemIndexes
 
@@ -57,7 +56,7 @@ class QuestionDisplayView(private val view: View) {
 
     fun bind(questionMetadata: QuestionMetadata) = also {
         categoryName.text = questionMetadata.category
-        difficultyLevel.text = convertHTMLStringToString(questionMetadata.difficulty)
+        difficultyLevel.text = questionMetadata.difficulty
         question.text = questionMetadata.question
         answer1.text = questionMetadata.answers[0]
         answer2.text = questionMetadata.answers[1]
