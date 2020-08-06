@@ -16,6 +16,7 @@ class QuestionDisplayController(
     ) {
 
     private var urlString: String = getURLString(selectedIndexes)
+
     init {
 
         questionDisplayView.hideQA()
@@ -49,27 +50,22 @@ class QuestionDisplayController(
 
     private fun setupDisplay() {
         if (questionDisplayViewModel.questionsMetadata.isNotEmpty()) {
-            questionDisplayView
-                .showQA()
-                .showSubmitButton()
-                .showNumQuestion()
-                .showCategoryDifficulty()
-
+            questionDisplayView.showQA()
+            questionDisplayView.showSubmitButton()
+            questionDisplayView.showNumQuestion()
+            questionDisplayView.showCategoryDifficulty()
+            questionDisplayView.hideProgressbar()
             bindData(questionDisplayViewModel.questionsMetadata[questionDisplayViewModel.currentQuestion])
             updateCurrentQuestionDisplay()
         } else {
-            questionDisplayView
-                .hideQA()
-                .hideProgressbar()
-                .hideSubmitButton()
-                .showTryAgainButton()
+            questionDisplayView.hideProgressbar()
+            questionDisplayView.showTryAgainButton()
         }
     }
 
     private fun bindData(questionMetadata: QuestionMetadata) {
-        questionDisplayView
-            .bind(questionMetadata)
-            .hideProgressbar()
+        questionDisplayView.bind(questionMetadata)
+
     }
 
     private fun updateCurrentQuestionDisplay() {
@@ -85,16 +81,18 @@ class QuestionDisplayController(
             } else {
                 displayWrongAnswerReply()
             }
-        questionDisplayView.hideSubmitButton().showNextButton()
+        questionDisplayView.hideSubmitButton()
+        questionDisplayView.showNextButton()
     }
 
     private fun nextQuestion() {
-        questionDisplayView.hideQuestionReply().showQA()
         if(questionDisplayViewModel.currentQuestion < questionDisplayViewModel.questionsMetadata.size-1) {
             questionDisplayViewModel.currentQuestion++
             bindData(questionDisplayViewModel.questionsMetadata[questionDisplayViewModel.currentQuestion])
             updateCurrentQuestionDisplay()
-            questionDisplayView.showSubmitButton().hideNextButton()
+            questionDisplayView.hideQuestionReply()
+            questionDisplayView.showSubmitButton()
+            questionDisplayView.hideNextButton()
         } else {
             navigateToGameFinish()
         }
@@ -110,11 +108,19 @@ class QuestionDisplayController(
 
 
     private fun displayRightAnswerReply () {
-        questionDisplayView.setQuestionReply("Yeah, You answer is correct")
+        questionDisplayView.setQuestionReply(getRightAnswerReply())
     }
 
     private fun displayWrongAnswerReply () {
-        questionDisplayView.setQuestionReply("Sorry, right answer is: ${questionDisplayViewModel.questionsMetadata[questionDisplayViewModel.currentQuestion].correctAnswer}")
+        questionDisplayView.setQuestionReply(getWrongAnswerReply())
+    }
+
+    private fun getWrongAnswerReply(): String {
+        return "Sorry, right answer is: ${questionDisplayViewModel.questionsMetadata[questionDisplayViewModel.currentQuestion].correctAnswer}"
+    }
+
+    private fun getRightAnswerReply(): String {
+        return "Yeah, You answer is correct"
     }
     private fun checkAnswer(): Boolean {
         val selectedAnswer = questionDisplayView.getSelectedRadioButtonText()

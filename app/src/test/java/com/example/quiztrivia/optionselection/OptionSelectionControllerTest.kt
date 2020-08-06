@@ -3,7 +3,7 @@ package com.example.quiztrivia.optionselection
 import android.widget.Spinner
 import com.nhaarman.mockito_kotlin.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -22,10 +22,11 @@ class OptionSelectionControllerTest {
 
     @ExperimentalCoroutinesApi
     @Test
-    fun `when user click on play quiz button, selected category, selected number of question and selected difficulty level are updated` () = runBlocking{
+    fun `when user click on play quiz button, selected category, selected number of question and selected difficulty level are updated` () = runBlockingTest{
 
         whenever(mockViewModel.coroutineScope).thenReturn(this)
         whenever(mockViewModel.dataManager).thenReturn(mock())
+
         whenever(mockViewModel.categoryArray).thenReturn(arrayOf("category"))
         whenever(mockViewModel.selectedItemIndexes).thenReturn(mock())
 
