@@ -18,13 +18,13 @@ class QuestionDisplayController(
     private var urlString: String = getURLString(selectedIndexes)
     init {
 
-        questionDisplayView
-            .hideQA()
-            .hideSubmitButton()
-            .hideNumQuestion()
-            .hideCategoryDifficulty()
+        questionDisplayView.hideQA()
+        questionDisplayView.hideSubmitButton()
+        questionDisplayView.hideNumQuestion()
+        questionDisplayView.hideCategoryDifficulty()
 
         getQuestionMetadata()
+
         questionDisplayView.setSubmitButtonClickListener {
             submitAnswer()
         }
@@ -67,11 +67,15 @@ class QuestionDisplayController(
     }
 
     private fun bindData(questionMetadata: QuestionMetadata) {
-        questionDisplayView.bind(questionMetadata).hideProgressbar()
+        questionDisplayView
+            .bind(questionMetadata)
+            .hideProgressbar()
     }
 
     private fun updateCurrentQuestionDisplay() {
-        questionDisplayView.setNumOfQuestion(questionDisplayViewModel.currentQuestion + 1, questionDisplayViewModel.questionsMetadata.size)
+        questionDisplayView.setNumOfQuestion(
+            questionDisplayViewModel.currentQuestion + 1,
+            questionDisplayViewModel.questionsMetadata.size)
     }
 
     private fun submitAnswer() {

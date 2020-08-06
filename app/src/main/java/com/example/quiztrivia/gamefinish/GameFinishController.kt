@@ -1,6 +1,5 @@
 package com.example.quiztrivia.gamefinish
 
-import com.example.quiztrivia.R
 import com.example.quiztrivia.questiondisplay.FinalScore
 
 class GameFinishController(private val gameFinishViewModel: GameFinishViewModel,
@@ -17,12 +16,11 @@ class GameFinishController(private val gameFinishViewModel: GameFinishViewModel,
     }
 
     private fun setScore() {
-        val finalScore = "You answered ${gameFinishViewModel.finalScore.rightQuestion} questions correctly out of ${gameFinishViewModel.finalScore.totalQuestion}"
-        gameFinishView.setScore(finalScore)
+        gameFinishView.setScore(gameFinishViewModel.finalScore.toString())
     }
 
     private fun navigateToHome() {
-        gameFinishView.navController.navigate(R.id.homeFragment)
+        gameFinishView.navigateToHome()
     }
 
 }
