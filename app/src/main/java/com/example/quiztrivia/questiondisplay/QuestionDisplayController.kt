@@ -22,6 +22,7 @@ class QuestionDisplayController(
             .hideQA()
             .hideSubmitButton()
             .hideNumQuestion()
+            .hideCategoryDifficulty()
 
         getQuestionMetadata()
         questionDisplayView.setSubmitButtonClickListener {
@@ -52,6 +53,7 @@ class QuestionDisplayController(
                 .showQA()
                 .showSubmitButton()
                 .showNumQuestion()
+                .showCategoryDifficulty()
 
             bindData(questionDisplayViewModel.questionsMetadata[questionDisplayViewModel.currentQuestion])
             updateCurrentQuestionDisplay()

@@ -126,5 +126,15 @@ class QuestionDisplayView(private val view: View) {
         numOfQuestion.visibility = View.VISIBLE
     }
 
+    fun hideCategoryDifficulty() = also {
+        categoryName.visibility = View.GONE
+        difficultyLevel.visibility = View.GONE
+    }
+
+    fun showCategoryDifficulty() = also {
+        categoryName.visibility = View.VISIBLE
+        difficultyLevel.visibility = View.VISIBLE
+    }
+
 
 }

@@ -17,7 +17,7 @@ class GameFinishController(private val gameFinishViewModel: GameFinishViewModel,
     }
 
     private fun setScore() {
-        val finalScore = "You answered ${gameFinishViewModel.finalScore.rightQuestion} questions correct out of ${gameFinishViewModel.finalScore.totalQuestion}"
+        val finalScore = "You answered ${gameFinishViewModel.finalScore.rightQuestion} questions correctly out of ${gameFinishViewModel.finalScore.totalQuestion}"
         gameFinishView.setScore(finalScore)
     }
 
