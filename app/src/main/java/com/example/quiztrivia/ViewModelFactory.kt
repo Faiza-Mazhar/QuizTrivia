@@ -6,10 +6,10 @@ import com.example.quiztrivia.dataservice.DataManager
 import com.example.quiztrivia.gamefinish.GameFinishViewModel
 import com.example.quiztrivia.homepage.HomeViewModel
 import com.example.quiztrivia.optionselection.OptionSelectionViewModel
-import com.example.quiztrivia.questiondisplay.QuestionDisplayViewModel
+import com.example.quiztrivia.optionselection.SelectedItemIndexes
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
-class ViewModelFactory() : ViewModelProvider.Factory{
+class ViewModelFactory(private val selectedItemIndex: SelectedItemIndexes = SelectedItemIndexes()) : ViewModelProvider.Factory{
 
     companion object {
         private val dataManager = DataManager()
@@ -19,7 +19,6 @@ class ViewModelFactory() : ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when (modelClass) {
             OptionSelectionViewModel::class.java -> optionSelectionViewModel()
-            QuestionDisplayViewModel::class.java -> questionDisplayViewModel()
             HomeViewModel::class.java -> homeViewModel()
             GameFinishViewModel::class.java -> gameFinishViewModel()
             else -> throw IllegalArgumentException()
@@ -29,8 +28,6 @@ class ViewModelFactory() : ViewModelProvider.Factory{
     private fun gameFinishViewModel()= GameFinishViewModel()
 
     private fun optionSelectionViewModel(): OptionSelectionViewModel = OptionSelectionViewModel(dataManager)
-
-    private fun questionDisplayViewModel(): QuestionDisplayViewModel = QuestionDisplayViewModel(dataManager)
 
     private fun homeViewModel(): HomeViewModel = HomeViewModel()
 

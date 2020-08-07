@@ -1,10 +1,8 @@
 package com.example.quiztrivia.questiondisplay
 
 import com.example.quiztrivia.optionselection.QuestionMetadata
-import com.example.quiztrivia.optionselection.SelectedItemIndexes
 import com.nhaarman.mockito_kotlin.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -27,12 +25,9 @@ internal class QuestionDisplayControllerTest {
     }
 
     @Test
-    fun `Hide UI on start before loading network response` () = runBlockingTest{
-
-        whenever(mockViewModel.coroutineScope).thenReturn(this)
-        whenever(mockViewModel.questionsMetadata).thenReturn(emptyList())
-        whenever(mockViewModel.dataManager).thenReturn(mock())
-        QuestionDisplayController(mockViewModel, mockView, SelectedItemIndexes())
+    fun `Hide UI on start before loading network response` () {
+        whenever(mockViewModel.hasDataLoaded).thenReturn(false)
+        QuestionDisplayController(mockViewModel, mockView)
 
         verify(mockView).hideQA()
         verify(mockView).hideSubmitButton()
@@ -41,49 +36,34 @@ internal class QuestionDisplayControllerTest {
     }
 
     @Test
-    fun `Display UI when valid questionsMetadata is loaded` () = runBlockingTest {
-
-        whenever(mockViewModel.coroutineScope).thenReturn(this)
+    fun `Display UI when valid questionsMetadata is loaded` () {
+        whenever(mockViewModel.hasDataLoaded).thenReturn(true)
         whenever(mockViewModel.questionsMetadata).thenReturn(mock())
-        whenever(mockViewModel.dataManager).thenReturn(mock())
-        QuestionDisplayController(mockViewModel, mockView, SelectedItemIndexes())
+        QuestionDisplayController(mockViewModel, mockView)
 
-        verify(mockView).hideQA()
-        verify(mockView).hideSubmitButton()
-        verify(mockView).hideNumQuestion()
-        verify(mockView).hideCategoryDifficulty()
+        verify(mockView).showQA()
+        verify(mockView).showSubmitButton()
+        verify(mockView).showNumQuestion()
+        verify(mockView).showCategoryDifficulty()
+        verify(mockView).hideProgressbar()
+        verify(mockView).bind(mockViewModel.questionsMetadata[mockViewModel.currentQuestion])
 
-        runBlockingTest {
-            verify(mockView).showQA()
-            verify(mockView).showSubmitButton()
-            verify(mockView).showNumQuestion()
-            verify(mockView).showCategoryDifficulty()
-            verify(mockView).hideProgressbar()
-            verify(mockView).bind(mockViewModel.questionsMetadata[mockViewModel.currentQuestion])
-        }
     }
 
-    @Suppress("BlockingMethodInNonBlockingContext")
     @Test
-    fun `Show retry button if response is not valid or empty` () = runBlockingTest{
-
-        whenever(mockViewModel.coroutineScope).thenReturn(this)
+    fun `Show retry button if response is not valid or empty` () {
+        whenever(mockViewModel.hasDataLoaded).thenReturn(true)
         whenever(mockViewModel.questionsMetadata).thenReturn(emptyList())
-        whenever(mockViewModel.dataManager).thenReturn(mock())
-        QuestionDisplayController(mockViewModel, mockView, SelectedItemIndexes())
+        QuestionDisplayController(mockViewModel, mockView)
 
-        runBlockingTest {
-            verify(mockView).hideProgressbar()
-            verify(mockView).showTryAgainButton()
-        }
+        verify(mockView).showTryAgainButton()
+        verify(mockView).hideProgressbar()
     }
 
     @Test
-    fun `when user click Submit button, if answer is correct and display reply` () = runBlockingTest {
-        whenever(mockViewModel.coroutineScope).thenReturn(this)
-        whenever(mockViewModel.dataManager).thenReturn(mock())
+    fun `when user click Submit button,and answer is correct and it display respective reply` ()  {
         whenever(mockViewModel.questionsMetadata).thenReturn(getQuestionMetadata())
-        QuestionDisplayController(mockViewModel, mockView, SelectedItemIndexes())
+        QuestionDisplayController(mockViewModel, mockView)
 
         whenever(mockView.getSelectedRadioButtonText()).thenReturn("android")
 
@@ -95,11 +75,9 @@ internal class QuestionDisplayControllerTest {
     }
 
     @Test
-    fun `when user click Submit button, if answer is wrong and display reply` () = runBlockingTest {
-        whenever(mockViewModel.coroutineScope).thenReturn(this)
-        whenever(mockViewModel.dataManager).thenReturn(mock())
+    fun `when user click Submit button, if answer is wrong and display reply` () {
         whenever(mockViewModel.questionsMetadata).thenReturn(getQuestionMetadata())
-        QuestionDisplayController(mockViewModel, mockView, SelectedItemIndexes())
+        QuestionDisplayController(mockViewModel, mockView)
 
         whenever(mockView.getSelectedRadioButtonText()).thenReturn("kindle")
 
@@ -111,11 +89,9 @@ internal class QuestionDisplayControllerTest {
     }
 
     @Test
-    fun `clicking on submit button hides it and shows Next button` ()  = runBlockingTest {
-        whenever(mockViewModel.coroutineScope).thenReturn(this)
-        whenever(mockViewModel.dataManager).thenReturn(mock())
+    fun `clicking on submit button hides it and shows Next button` ()  {
         whenever(mockViewModel.questionsMetadata).thenReturn(getQuestionMetadata())
-        QuestionDisplayController(mockViewModel, mockView, SelectedItemIndexes())
+        QuestionDisplayController(mockViewModel, mockView)
 
         whenever(mockView.getSelectedRadioButtonText()).thenReturn("anyString")
 
@@ -128,12 +104,9 @@ internal class QuestionDisplayControllerTest {
     }
 
     @Test
-    fun `click in next button hides itself and question reply and display next question`() = runBlockingTest {
-        whenever(mockViewModel.coroutineScope).thenReturn(this)
-        whenever(mockViewModel.dataManager).thenReturn(mock())
-
+    fun `click in next button hides itself and question reply and display next question`() {
         whenever(mockViewModel.questionsMetadata).thenReturn(getQuestionMetadata())
-        QuestionDisplayController(mockViewModel, mockView, SelectedItemIndexes())
+        QuestionDisplayController(mockViewModel, mockView)
 
         val clickCaptor = argumentCaptor<() -> Unit>()
         verify(mockView).setNextButtonClickListener(clickCaptor.capture())
@@ -141,14 +114,12 @@ internal class QuestionDisplayControllerTest {
 
         verify(mockView, atLeastOnce()).hideQuestionReply()
         verify(mockView).hideNextButton()
-        verify(mockView, times(2)).showSubmitButton()
-        verify(mockView, times(2)).bind(mockViewModel.questionsMetadata[mockViewModel.currentQuestion])
+        verify(mockView, times(1)).showSubmitButton()
+        verify(mockView, times(1)).bind(mockViewModel.questionsMetadata[mockViewModel.currentQuestion])
     }
 
     @Test
-    fun `when current question is last question on the list, then clicking on next button takes to final score fragment`() = runBlockingTest {
-        whenever(mockViewModel.coroutineScope).thenReturn(this)
-        whenever(mockViewModel.dataManager).thenReturn(mock())
+    fun `when current question is last question on the list, then clicking on next button takes to final score fragment`() {
         whenever(mockViewModel.questionsMetadata).thenReturn(listOf(QuestionMetadata(
             "category",
             "medium",
@@ -156,7 +127,7 @@ internal class QuestionDisplayControllerTest {
             "android",
             listOf("android", "ios", "kindle", "iPad")
         )))
-        QuestionDisplayController(mockViewModel, mockView, SelectedItemIndexes())
+        QuestionDisplayController(mockViewModel, mockView)
 
         val nextClickCaptor = argumentCaptor<() -> Unit>()
         verify(mockView).setNextButtonClickListener(nextClickCaptor.capture())

@@ -1,30 +1,28 @@
 package com.example.quiztrivia.questiondisplay
 
-import com.example.quiztrivia.dataservice.getURLString
 import com.example.quiztrivia.optionselection.QuestionMetadata
-import com.example.quiztrivia.optionselection.SelectedItemIndexes
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
-@ExperimentalCoroutinesApi
+@OptIn(ExperimentalCoroutinesApi::class)
 class QuestionDisplayController(
     private val questionDisplayViewModel: QuestionDisplayViewModel,
-    private val questionDisplayView: QuestionDisplayView,
-    private val selectedIndexes: SelectedItemIndexes
+    private val questionDisplayView: QuestionDisplayView
     ) {
-
-    private var urlString: String = getURLString(selectedIndexes)
 
     init {
 
-        questionDisplayView.hideQA()
-        questionDisplayView.hideSubmitButton()
-        questionDisplayView.hideNumQuestion()
-        questionDisplayView.hideCategoryDifficulty()
+        if(questionDisplayViewModel.hasDataLoaded) {
+            setupDisplay()
 
-        getQuestionMetadata()
+        } else {
+            questionDisplayView.hideQA()
+            questionDisplayView.hideSubmitButton()
+            questionDisplayView.hideNumQuestion()
+            questionDisplayView.hideCategoryDifficulty()
+            questionDisplayViewModel.onQuestionMetadataLoaded = {
+                setupDisplay()
+            }
+        }
 
         questionDisplayView.setSubmitButtonClickListener {
             submitAnswer()
@@ -35,16 +33,7 @@ class QuestionDisplayController(
         }
 
         questionDisplayView.setTryAgainButtonClickListener {
-            questionDisplayView.navigateToItSelf(selectedIndexes)
-        }
-    }
-
-    private fun getQuestionMetadata() {
-        questionDisplayViewModel.coroutineScope.launch {
-            withContext(Dispatchers.IO) {
-                questionDisplayViewModel.questionsMetadata = questionDisplayViewModel.dataManager.getQuestionsMetadata(urlString)
-            }
-            setupDisplay()
+            questionDisplayView.navigateToItSelf(questionDisplayViewModel.selectedItemIndexes)
         }
     }
 
