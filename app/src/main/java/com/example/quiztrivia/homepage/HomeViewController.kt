@@ -14,6 +14,7 @@ class HomeViewController(viewModel: HomeViewModel, private val homeView: HomeVie
         }
     }
 
+
     private fun navigateToQuestionDisplayFragment() {
         homeView.navigateToQuestionDisplayFragment(SelectedItemIndexes())
     }

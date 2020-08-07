@@ -23,6 +23,6 @@ class GameFinishView(view: View) {
     }
 
     fun navigateToHome() {
-        navController.navigate(R.id.homeFragment)
+        navController.navigate(GameFinishFragmentDirections.actionGameFinishFragmentToHomeFragment())
     }
 }

@@ -7,25 +7,30 @@ import com.example.quiztrivia.optionselection.CategoryMetadata
 import com.example.quiztrivia.optionselection.QuestionMetadata
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-@ExperimentalCoroutinesApi
 class DataHandlerOkhttp(): DataHandler {
 
     private val okhttpService = OkhttpService()
     private val jsonParser = JsonParser()
     private val dataAdapter = DataAdapter()
 
+    @ExperimentalCoroutinesApi
     override suspend fun getQuestionMetadata(urlString: String): List<QuestionMetadata>{
-        val response = getNetworkResponse(urlString)
-        val questionsDefinitionList = jsonParser.questionsDefinitionList(response)
+        val networkResponse = getNetworkResponse(urlString)
+        val questionsDefinitionList = jsonParser.questionsDefinitionList(networkResponse)
         return dataAdapter.convertQuestionDefinitionToQuestionMetadata(questionsDefinitionList!!)
     }
-
-    override suspend fun getCategoryMetadata(urlString: String): List<CategoryMetadata>  {
-        val response = getNetworkResponse(urlString)
-        val categoryDefinitionList = jsonParser.getCategoryDefinitionList(response)
+    
+    override fun getCategoryMetadata(categoryMetadataResponse: String): List<CategoryMetadata>  {
+        val categoryDefinitionList = jsonParser.getCategoryDefinitionList(categoryMetadataResponse)
         return dataAdapter.convertCategoryDefinitionToCategoryMetadata(categoryDefinitionList)
     }
 
+    @ExperimentalCoroutinesApi
+    override suspend fun getCategoryMetadataResponse(urlString: String): String {
+        return getNetworkResponse(urlString)
+    }
+
+    @ExperimentalCoroutinesApi
     private suspend fun getNetworkResponse(urlString: String): String {
         return when (val outcome = okhttpService.getNetworkResponse(urlString)) {
             is Outcome.Success -> outcome.payload

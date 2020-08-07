@@ -23,7 +23,7 @@
         style="@style/text_olive_bold_centre"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
-        android:text="Questions "
+        android:text="@string/questions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/question_display_category_difficulty_info"

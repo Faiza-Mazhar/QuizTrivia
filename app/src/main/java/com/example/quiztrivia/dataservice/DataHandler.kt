@@ -5,5 +5,6 @@ import com.example.quiztrivia.optionselection.QuestionMetadata
 
 interface DataHandler {
     suspend fun getQuestionMetadata(urlString: String): List<QuestionMetadata>
-    suspend fun getCategoryMetadata(urlString: String): List<CategoryMetadata>
+    fun getCategoryMetadata(categoryMetadataResponse: String): List<CategoryMetadata>
+    suspend fun getCategoryMetadataResponse(urlString: String): String
 }
