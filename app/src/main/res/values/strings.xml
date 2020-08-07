@@ -20,6 +20,7 @@
     <string name="score">Score</string>
     <string name="final_score">Final Score</string>
     <string name="please_try_again">Please try again</string>
+    <string name="questions">Questions</string>
 
 
     <string-array name="num_of_questions">

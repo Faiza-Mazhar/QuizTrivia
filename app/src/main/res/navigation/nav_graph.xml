@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_OptionSelectionFragment"
-            app:destination="@id/OptionSelectionFragment" />
+            app:destination="@id/OptionSelectionFragment"/>
+
         <action
             android:id="@+id/action_homeFragment_to_QuizQuestions"
             app:destination="@id/QuizQuestions" />
@@ -37,10 +38,12 @@
             app:argType="com.example.quiztrivia.optionselection.SelectedItemIndexes" />
         <action
             android:id="@+id/action_QuizQuestions_to_gameFinishFragment"
-            app:destination="@id/gameFinishFragment" />
+            app:destination="@id/gameFinishFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_QuizQuestions_self"
-            app:destination="@id/QuizQuestions" />
+            app:destination="@id/QuizQuestions"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFinishFragment"
@@ -49,7 +52,11 @@
         tools:layout="@layout/fragment_game_finish" >
         <argument
             android:name="finalScore"
-            app:argType="com.example.quiztrivia.questiondisplay.FinalScore" />
+            app:argType="com.example.quiztrivia.questiondisplay.FinalScore"
+            />
+        <action
+            android:id="@+id/action_gameFinishFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 
 </navigation>
