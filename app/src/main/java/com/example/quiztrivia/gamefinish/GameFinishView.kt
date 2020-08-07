@@ -21,4 +21,8 @@ class GameFinishView(view: View) {
     fun setScore(string: String) {
         finalScore.text = string
     }
+
+    fun navigateToHome() {
+        navController.navigate(R.id.homeFragment)
+    }
 }

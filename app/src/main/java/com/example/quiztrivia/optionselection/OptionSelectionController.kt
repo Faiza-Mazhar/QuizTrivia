@@ -22,7 +22,7 @@ class OptionSelectionController (private val optionSelectionViewModel: OptionSel
     }
 
     private fun navigateToQuestionsDisplayFragment() {
-        optionSelectionView.naviagteToQuestionDisplayFragment(optionSelectionViewModel.selectedItemIndexes)
+        optionSelectionView.navigateToQuestionDisplayFragment(optionSelectionViewModel.selectedItemIndexes)
     }
 
     private fun setupView() {

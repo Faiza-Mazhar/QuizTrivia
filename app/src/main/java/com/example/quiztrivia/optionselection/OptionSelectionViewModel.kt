@@ -9,7 +9,9 @@ import kotlinx.android.parcel.Parcelize
 class OptionSelectionViewModel(val dataManager: DataManager): ViewModel() {
 
     var selectedItemIndexes = SelectedItemIndexes()
+
     val coroutineScope = viewModelScope
+
     lateinit var categoriesMetadata: List<CategoryMetadata>
     var categoryArray: Array<String?>? = null
 

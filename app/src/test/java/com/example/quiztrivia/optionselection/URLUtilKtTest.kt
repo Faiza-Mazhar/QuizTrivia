@@ -9,6 +9,7 @@ import org.junit.Test
 
 internal class IndexUtilsTest {
 
+    private val baseURL= "https://opentdb.com/api.php?amount="
     @Test
     fun `if index is between 1-8, then it returns the corresponding number of question`() {
         val expectedNumber = "7"
@@ -59,7 +60,7 @@ internal class IndexUtilsTest {
     @Test
     fun `if selectedItemIndex is (2, 3, 2), then it generated the url with all the fields`() {
         val selectedItemIndexes = SelectedItemIndexes(1, 1, 2)
-        val expectedUrlString = "amount=5&category=10&difficulty=medium&type=multiple"
+        val expectedUrlString = baseURL + "5&category=10&difficulty=medium&type=multiple"
         Assert.assertEquals(expectedUrlString,
             getURLString(selectedItemIndexes)
         )
@@ -68,7 +69,7 @@ internal class IndexUtilsTest {
     @Test
     fun`if selectedItemIndex is (1, 0, 0), then generated URL will not have category and difficulty level` () {
         val selectedItemIndexes = SelectedItemIndexes(1, 0, 0)
-        val expectedUrlString = "amount=5&type=multiple"
+        val expectedUrlString = baseURL + "5&type=multiple"
         Assert.assertEquals(expectedUrlString,
             getURLString(selectedItemIndexes)
         )
@@ -77,7 +78,7 @@ internal class IndexUtilsTest {
     @Test
     fun`if selectedItemIndex is (1, 0, 1), then generated URL will not have category` () {
         val selectedItemIndexes = SelectedItemIndexes(1, 0, 1)
-        val expectedUrlString = "amount=5&difficulty=easy&type=multiple"
+        val expectedUrlString = baseURL + "5&difficulty=easy&type=multiple"
         Assert.assertEquals(expectedUrlString,
             getURLString(selectedItemIndexes)
         )
@@ -86,7 +87,7 @@ internal class IndexUtilsTest {
     @Test
     fun`if selectedItemIndex is (1, 1, 0), then generated URL will not have difficulty level` () {
         val selectedItemIndexes = SelectedItemIndexes(1, 1, 0)
-        val expectedUrlString = "amount=5&category=10&type=multiple"
+        val expectedUrlString = baseURL + "5&category=10&type=multiple"
         Assert.assertEquals(expectedUrlString,
             getURLString(selectedItemIndexes)
         )

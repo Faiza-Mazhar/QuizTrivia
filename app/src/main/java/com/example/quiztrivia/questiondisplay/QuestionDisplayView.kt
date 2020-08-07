@@ -4,8 +4,8 @@ import android.view.View
 import android.widget.*
 import androidx.navigation.findNavController
 import com.example.quiztrivia.R
-import com.example.quiztrivia.convertHTMLStringToString
 import com.example.quiztrivia.optionselection.QuestionMetadata
+import com.example.quiztrivia.optionselection.SelectedItemIndexes
 
 class QuestionDisplayView(private val view: View) {
 
@@ -23,8 +23,7 @@ class QuestionDisplayView(private val view: View) {
     private val loadingProgressBar: ProgressBar = view.findViewById(R.id.question_display_progressBar)
     private val reply: TextView = view.findViewById(R.id.question_display_answer_reply)
     private val tryAgain: Button = view.findViewById(R.id.question_display_retry)
-
-    val navController = view.findNavController()
+    private val navController = view.findNavController()
 
 
     fun setSubmitButtonClickListener (listener: () -> Unit) {
@@ -45,9 +44,19 @@ class QuestionDisplayView(private val view: View) {
         }
     }
 
+    fun navigateToItSelf(selectedItemIndexes: SelectedItemIndexes) {
+        navController.navigate(QuestionDisplayFragmentDirections.actionQuizQuestionsSelf(selectedItemIndexes))
+    }
+
+    fun navigateToGameFinish(finalScore: FinalScore) {
+        navController.navigate(
+            QuestionDisplayFragmentDirections.actionQuizQuestionsToGameFinishFragment(finalScore)
+        )
+    }
+
     fun bind(questionMetadata: QuestionMetadata) = also {
         categoryName.text = questionMetadata.category
-        difficultyLevel.text = convertHTMLStringToString(questionMetadata.difficulty)
+        difficultyLevel.text = questionMetadata.difficulty
         question.text = questionMetadata.question
         answer1.text = questionMetadata.answers[0]
         answer2.text = questionMetadata.answers[1]
@@ -114,6 +123,16 @@ class QuestionDisplayView(private val view: View) {
 
     fun showNumQuestion() = also {
         numOfQuestion.visibility = View.VISIBLE
+    }
+
+    fun hideCategoryDifficulty() = also {
+        categoryName.visibility = View.GONE
+        difficultyLevel.visibility = View.GONE
+    }
+
+    fun showCategoryDifficulty() = also {
+        categoryName.visibility = View.VISIBLE
+        difficultyLevel.visibility = View.VISIBLE
     }
 
 
