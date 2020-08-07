@@ -7,7 +7,8 @@ import com.example.quiztrivia.gamefinish.GameFinishViewModel
 import com.example.quiztrivia.homepage.HomeViewModel
 import com.example.quiztrivia.optionselection.OptionSelectionViewModel
 import com.example.quiztrivia.questiondisplay.QuestionDisplayViewModel
-
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+@ExperimentalCoroutinesApi
 class ViewModelFactory() : ViewModelProvider.Factory{
 
     companion object {
