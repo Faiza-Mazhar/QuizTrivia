@@ -12,7 +12,7 @@ class StringUtilsKtTest {
 
     @Test
     fun replaceAnsi() {
-        val string = "&qout; &amp; &#039;"
+        val string = "&quot; &amp; &#039;"
         Assert.assertEquals("\" & \'", replaceHtmlEntities(string))
     }
 }
