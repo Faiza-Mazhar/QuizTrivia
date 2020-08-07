@@ -19,8 +19,7 @@ class DataHandlerOkhttp(): DataHandler {
         val questionsDefinitionList = jsonParser.questionsDefinitionList(networkResponse)
         return dataAdapter.convertQuestionDefinitionToQuestionMetadata(questionsDefinitionList!!)
     }
-
-    @ExperimentalCoroutinesApi
+    
     override fun getCategoryMetadata(categoryMetadataResponse: String): List<CategoryMetadata>  {
         val categoryDefinitionList = jsonParser.getCategoryDefinitionList(categoryMetadataResponse)
         return dataAdapter.convertCategoryDefinitionToCategoryMetadata(categoryDefinitionList)
