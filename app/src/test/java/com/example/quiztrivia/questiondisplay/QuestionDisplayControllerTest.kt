@@ -26,9 +26,7 @@ internal class QuestionDisplayControllerTest {
 
     @Test
     fun `Hide UI on start before loading network response` () {
-
         whenever(mockViewModel.hasDataLoaded).thenReturn(false)
-        whenever(mockViewModel.dataManager).thenReturn(mock())
         QuestionDisplayController(mockViewModel, mockView)
 
         verify(mockView).hideQA()
@@ -41,7 +39,6 @@ internal class QuestionDisplayControllerTest {
     fun `Display UI when valid questionsMetadata is loaded` () {
         whenever(mockViewModel.hasDataLoaded).thenReturn(true)
         whenever(mockViewModel.questionsMetadata).thenReturn(mock())
-        whenever(mockViewModel.dataManager).thenReturn(mock())
         QuestionDisplayController(mockViewModel, mockView)
 
         verify(mockView).showQA()
@@ -55,7 +52,6 @@ internal class QuestionDisplayControllerTest {
 
     @Test
     fun `Show retry button if response is not valid or empty` () {
-        whenever(mockViewModel.dataManager).thenReturn(mock())
         whenever(mockViewModel.hasDataLoaded).thenReturn(true)
         whenever(mockViewModel.questionsMetadata).thenReturn(emptyList())
         QuestionDisplayController(mockViewModel, mockView)
@@ -66,7 +62,6 @@ internal class QuestionDisplayControllerTest {
 
     @Test
     fun `when user click Submit button,and answer is correct and it display respective reply` ()  {
-        whenever(mockViewModel.dataManager).thenReturn(mock())
         whenever(mockViewModel.questionsMetadata).thenReturn(getQuestionMetadata())
         QuestionDisplayController(mockViewModel, mockView)
 
@@ -81,7 +76,6 @@ internal class QuestionDisplayControllerTest {
 
     @Test
     fun `when user click Submit button, if answer is wrong and display reply` () {
-        whenever(mockViewModel.dataManager).thenReturn(mock())
         whenever(mockViewModel.questionsMetadata).thenReturn(getQuestionMetadata())
         QuestionDisplayController(mockViewModel, mockView)
 
@@ -96,7 +90,6 @@ internal class QuestionDisplayControllerTest {
 
     @Test
     fun `clicking on submit button hides it and shows Next button` ()  {
-        whenever(mockViewModel.dataManager).thenReturn(mock())
         whenever(mockViewModel.questionsMetadata).thenReturn(getQuestionMetadata())
         QuestionDisplayController(mockViewModel, mockView)
 
@@ -112,8 +105,6 @@ internal class QuestionDisplayControllerTest {
 
     @Test
     fun `click in next button hides itself and question reply and display next question`() {
-        whenever(mockViewModel.dataManager).thenReturn(mock())
-
         whenever(mockViewModel.questionsMetadata).thenReturn(getQuestionMetadata())
         QuestionDisplayController(mockViewModel, mockView)
 
@@ -129,7 +120,6 @@ internal class QuestionDisplayControllerTest {
 
     @Test
     fun `when current question is last question on the list, then clicking on next button takes to final score fragment`() {
-        whenever(mockViewModel.dataManager).thenReturn(mock())
         whenever(mockViewModel.questionsMetadata).thenReturn(listOf(QuestionMetadata(
             "category",
             "medium",

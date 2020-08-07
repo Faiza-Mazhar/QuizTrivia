@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.quiztrivia.R
-import com.example.quiztrivia.dataservice.DataManager
 import com.example.quiztrivia.optionselection.SelectedItemIndexes
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -37,7 +36,7 @@ class QuestionDisplayViewModelFactory
     @ExperimentalCoroutinesApi
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(QuestionDisplayViewModel::class.java)){
-            return QuestionDisplayViewModel(DataManager(),  selectedItemIndexes) as T
+            return QuestionDisplayViewModel(selectedItemIndexes) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

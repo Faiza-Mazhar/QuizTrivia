@@ -12,9 +12,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @ExperimentalCoroutinesApi
-class QuestionDisplayViewModel (private val dataManager: DataManager, val selectedItemIndexes: SelectedItemIndexes): ViewModel() {
+class QuestionDisplayViewModel (val selectedItemIndexes: SelectedItemIndexes): ViewModel() {
 
     private var urlString: String = getURLString(selectedItemIndexes)
+    private val dataManager: DataManager = DataManager()
 
     lateinit var questionsMetadata: List<QuestionMetadata>
 
