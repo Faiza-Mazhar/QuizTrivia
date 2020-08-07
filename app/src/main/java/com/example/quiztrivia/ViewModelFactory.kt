@@ -6,10 +6,11 @@ import com.example.quiztrivia.dataservice.DataManager
 import com.example.quiztrivia.gamefinish.GameFinishViewModel
 import com.example.quiztrivia.homepage.HomeViewModel
 import com.example.quiztrivia.optionselection.OptionSelectionViewModel
+import com.example.quiztrivia.optionselection.SelectedItemIndexes
 import com.example.quiztrivia.questiondisplay.QuestionDisplayViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
-class ViewModelFactory() : ViewModelProvider.Factory{
+class ViewModelFactory(private val selectedItemIndex: SelectedItemIndexes = SelectedItemIndexes()) : ViewModelProvider.Factory{
 
     companion object {
         private val dataManager = DataManager()
@@ -30,7 +31,7 @@ class ViewModelFactory() : ViewModelProvider.Factory{
 
     private fun optionSelectionViewModel(): OptionSelectionViewModel = OptionSelectionViewModel(dataManager)
 
-    private fun questionDisplayViewModel(): QuestionDisplayViewModel = QuestionDisplayViewModel(dataManager)
+    private fun questionDisplayViewModel(): QuestionDisplayViewModel = QuestionDisplayViewModel(dataManager, selectedItemIndex)
 
     private fun homeViewModel(): HomeViewModel = HomeViewModel()
 
