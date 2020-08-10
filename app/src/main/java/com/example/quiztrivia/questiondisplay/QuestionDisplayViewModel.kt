@@ -28,7 +28,7 @@ class QuestionDisplayViewModel (val selectedItemIndexes: SelectedItemIndexes): V
         getQuestionMetadata()
     }
 
-    private fun getQuestionMetadata() {
+    fun getQuestionMetadata() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 questionsMetadata = dataManager.getQuestionsMetadata(urlString)

@@ -3,18 +3,13 @@ package com.example.quiztrivia.questiondisplay
 import com.example.quiztrivia.optionselection.QuestionMetadata
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-@OptIn(ExperimentalCoroutinesApi::class)
+@ExperimentalCoroutinesApi
 class QuestionDisplayController(
     private val questionDisplayViewModel: QuestionDisplayViewModel,
     private val questionDisplayView: QuestionDisplayView
     ) {
 
     init {
-
-        if(questionDisplayViewModel.hasDataLoaded) {
-            setupDisplay()
-
-        } else {
             questionDisplayView.hideQA()
             questionDisplayView.hideSubmitButton()
             questionDisplayView.hideNumQuestion()
@@ -22,7 +17,6 @@ class QuestionDisplayController(
             questionDisplayViewModel.onQuestionMetadataLoaded = {
                 setupDisplay()
             }
-        }
 
         questionDisplayView.setSubmitButtonClickListener {
             submitAnswer()
@@ -33,7 +27,7 @@ class QuestionDisplayController(
         }
 
         questionDisplayView.setTryAgainButtonClickListener {
-            questionDisplayView.navigateToItSelf(questionDisplayViewModel.selectedItemIndexes)
+            questionDisplayViewModel.getQuestionMetadata()
         }
     }
 
