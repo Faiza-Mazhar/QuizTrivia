@@ -11,7 +11,7 @@ class GameFinishView(view: View) {
     private val finalScore: TextView = view.findViewById(R.id.game_finish_final_score)
     private val startAgain: Button = view.findViewById(R.id.game_finish_start_again)
 
-    val navController = view.findNavController()
+    private val navController = view.findNavController()
 
     fun setStartAgainClickListener(listener: () -> Unit) {
         startAgain.setOnClickListener{
