@@ -7,4 +7,5 @@ interface DataHandler {
     suspend fun getQuestionMetadata(urlString: String): List<QuestionMetadata>
     fun getCategoryMetadata(categoryMetadataResponse: String): List<CategoryMetadata>
     suspend fun getCategoryMetadataResponse(urlString: String): String
+    fun getCategoryArray(categoryMetadata: List<CategoryMetadata>) : Array<String?>
 }

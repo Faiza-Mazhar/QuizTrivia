@@ -39,7 +39,7 @@ class DataHandlerOkhttp(): DataHandler {
         }
     }
 
-    fun getCategoryArray(categoryMetadata: List<CategoryMetadata>) : Array<String?> {
+    override fun getCategoryArray(categoryMetadata: List<CategoryMetadata>) : Array<String?> {
         return dataAdapter.convertCategoryMetadataListToArray(categoryMetadata)
     }
 }
