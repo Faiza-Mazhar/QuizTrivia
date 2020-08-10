@@ -2,6 +2,7 @@ package com.example.quiztrivia.dataservice
 
 import com.example.quiztrivia.Outcome
 import com.example.quiztrivia.dataservice.json.JsonParser
+import com.example.quiztrivia.dataservice.network.NetworkService
 import com.example.quiztrivia.dataservice.network.OkhttpService
 import com.example.quiztrivia.optionselection.CategoryMetadata
 import com.example.quiztrivia.optionselection.QuestionMetadata
@@ -9,9 +10,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class DataHandlerOkhttp(): DataHandler {
 
-    private val okhttpService = OkhttpService()
+    private val okhttpService: NetworkService = OkhttpService()
     private val jsonParser = JsonParser()
-    private val dataAdapter = DataAdapter()
+    override val dataAdapter = DataAdapter()
 
     @ExperimentalCoroutinesApi
     override suspend fun getQuestionMetadata(urlString: String): List<QuestionMetadata>{
@@ -38,7 +39,7 @@ class DataHandlerOkhttp(): DataHandler {
         }
     }
 
-    fun getCategoryArray(categoryMetadata: List<CategoryMetadata>) : Array<String?> {
-        return dataAdapter.convertCategoryDefinitionListToArray(categoryMetadata)
+    override fun getCategoryArray(categoryMetadata: List<CategoryMetadata>) : Array<String?> {
+        return dataAdapter.convertCategoryMetadataListToArray(categoryMetadata)
     }
 }
