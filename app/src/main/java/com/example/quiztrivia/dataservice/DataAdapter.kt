@@ -33,10 +33,11 @@ class DataAdapter {
     }
 
     private fun replaceHTMLEntitiesForAnswers(answers: List<String>): List<String>{
+        val list: MutableList<String> = mutableListOf()
         answers.forEach { answer ->
-            replaceHtmlEntities(answer)
+            list.add(replaceHtmlEntities(answer))
         }
-        return answers
+        return list
     }
 
     fun convertCategoryDefinitionListToArray(categoryMetadata: List<CategoryMetadata>): Array<String?> {

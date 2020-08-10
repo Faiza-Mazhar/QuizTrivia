@@ -9,9 +9,9 @@ import kotlinx.coroutines.*
 @ExperimentalCoroutinesApi
 class Bootstrapper(context: Context) {
 
-    private var PRIVATE_MODE = 0
-    private val sharedPreference: SharedPreferences = context.getSharedPreferences("QuizCategories", PRIVATE_MODE)
-    var editor: SharedPreferences.Editor = sharedPreference.edit()
+    private var privateMode = 0
+    private val sharedPreference: SharedPreferences = context.getSharedPreferences("QuizCategories", privateMode)
+    private var editor: SharedPreferences.Editor = sharedPreference.edit()
 
     private lateinit var categoryMetadataResponse: String
 
