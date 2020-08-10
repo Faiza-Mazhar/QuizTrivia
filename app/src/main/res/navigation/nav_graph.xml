@@ -40,10 +40,6 @@
             android:id="@+id/action_QuizQuestions_to_gameFinishFragment"
             app:destination="@id/gameFinishFragment"
             app:popUpTo="@id/homeFragment" />
-        <action
-            android:id="@+id/action_QuizQuestions_self"
-            app:destination="@id/QuizQuestions"
-            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFinishFragment"
