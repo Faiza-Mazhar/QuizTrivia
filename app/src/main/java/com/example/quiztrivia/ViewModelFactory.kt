@@ -7,6 +7,7 @@ import com.example.quiztrivia.gamefinish.GameFinishViewModel
 import com.example.quiztrivia.homepage.HomeViewModel
 import com.example.quiztrivia.optionselection.OptionSelectionViewModel
 import com.example.quiztrivia.optionselection.SelectedItemIndexes
+import com.example.quiztrivia.questiondisplay.QuestionDisplayViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 class ViewModelFactory(private val selectedItemIndex: SelectedItemIndexes = SelectedItemIndexes()) : ViewModelProvider.Factory{
@@ -21,9 +22,12 @@ class ViewModelFactory(private val selectedItemIndex: SelectedItemIndexes = Sele
             OptionSelectionViewModel::class.java -> optionSelectionViewModel()
             HomeViewModel::class.java -> homeViewModel()
             GameFinishViewModel::class.java -> gameFinishViewModel()
+            QuestionDisplayViewModel::class.java -> questionDisplayViewModel()
             else -> throw IllegalArgumentException()
         } as T
     }
+
+    private fun questionDisplayViewModel(): QuestionDisplayViewModel = QuestionDisplayViewModel(selectedItemIndex)
 
     private fun gameFinishViewModel()= GameFinishViewModel()
 
