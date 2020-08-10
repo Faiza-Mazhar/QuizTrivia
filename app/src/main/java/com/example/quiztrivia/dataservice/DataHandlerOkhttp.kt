@@ -12,7 +12,7 @@ class DataHandlerOkhttp(): DataHandler {
 
     private val okhttpService: NetworkService = OkhttpService()
     private val jsonParser = JsonParser()
-    private val dataAdapter = DataAdapter()
+    override val dataAdapter = DataAdapter()
 
     @ExperimentalCoroutinesApi
     override suspend fun getQuestionMetadata(urlString: String): List<QuestionMetadata>{
