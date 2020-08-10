@@ -20,7 +20,7 @@ class DataAdapterTest {
     fun convertCategoryDefinitionListToArray() {
         val categoryMetadata = getCategoryMetadata()
         val expectedCategoriesArray = arrayOf("category", "category")
-        Assert.assertEquals(expectedCategoriesArray,  dataAdapter.convertCategoryDefinitionListToArray(categoryMetadata))
+        Assert.assertEquals(expectedCategoriesArray,  dataAdapter.convertCategoryMetadataListToArray(categoryMetadata))
 
     }
 

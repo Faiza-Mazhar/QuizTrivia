@@ -28,6 +28,14 @@ class DataAdapter {
         return questionMetadata
     }
 
+    fun convertCategoryMetadataListToArray(categoryMetadata: List<CategoryMetadata>): Array<String?> {
+        val categories = arrayOfNulls<String>(categoryMetadata.size)
+        for(index in categoryMetadata.indices){
+            categories[index] = categoryMetadata[index].name
+        }
+        return categories
+    }
+
     private fun shuffleAnswers(questionsDefinition: QuestionDefinition): List<String> {
         return listOf(questionsDefinition.correctAnswer).plus(questionsDefinition.wrongAnswers).shuffled()
     }
@@ -38,14 +46,6 @@ class DataAdapter {
             list.add(replaceHtmlEntities(answer))
         }
         return list
-    }
-
-    fun convertCategoryDefinitionListToArray(categoryMetadata: List<CategoryMetadata>): Array<String?> {
-        val categories = arrayOfNulls<String>(categoryMetadata.size)
-        for(index in categoryMetadata.indices){
-            categories[index] = categoryMetadata[index].name
-        }
-        return categories
     }
 
 }
