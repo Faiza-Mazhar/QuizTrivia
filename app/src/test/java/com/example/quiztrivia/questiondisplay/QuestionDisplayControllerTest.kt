@@ -41,10 +41,6 @@ internal class QuestionDisplayControllerTest {
         whenever(mockViewModel.questionsMetadata).thenReturn(mock())
         QuestionDisplayController(mockViewModel, mockView)
 
-        val clickCaptor = argumentCaptor<() -> Unit>()
-        verify(mockViewModel).onQuestionMetadataLoaded = clickCaptor.capture()
-        clickCaptor.firstValue.invoke()
-
         verify(mockView).showQA()
         verify(mockView).showSubmitButton()
         verify(mockView).showNumQuestion()
@@ -59,10 +55,6 @@ internal class QuestionDisplayControllerTest {
         whenever(mockViewModel.hasDataLoaded).thenReturn(true)
         whenever(mockViewModel.questionsMetadata).thenReturn(emptyList())
         QuestionDisplayController(mockViewModel, mockView)
-
-        val clickCaptor = argumentCaptor<() -> Unit>()
-        verify(mockViewModel).onQuestionMetadataLoaded = clickCaptor.capture()
-        clickCaptor.firstValue.invoke()
 
         verify(mockView).showTryAgainButton()
         verify(mockView).hideProgressbar()

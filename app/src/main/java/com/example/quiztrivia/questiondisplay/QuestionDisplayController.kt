@@ -10,6 +10,9 @@ class QuestionDisplayController(
     ) {
 
     init {
+        if(questionDisplayViewModel.hasDataLoaded) {
+            setupDisplay()
+        } else {
             questionDisplayView.hideQA()
             questionDisplayView.hideSubmitButton()
             questionDisplayView.hideNumQuestion()
@@ -17,6 +20,7 @@ class QuestionDisplayController(
             questionDisplayViewModel.onQuestionMetadataLoaded = {
                 setupDisplay()
             }
+        }
 
         questionDisplayView.setSubmitButtonClickListener {
             submitAnswer()
