@@ -6,7 +6,6 @@ import androidx.navigation.findNavController
 import com.example.quiztrivia.R
 import com.example.quiztrivia.convertFirstLetterToUpperCase
 import com.example.quiztrivia.optionselection.QuestionMetadata
-import com.example.quiztrivia.optionselection.SelectedItemIndexes
 
 class QuestionDisplayView(private val view: View) {
 
@@ -43,10 +42,6 @@ class QuestionDisplayView(private val view: View) {
         tryAgain.setOnClickListener {
             listener.invoke()
         }
-    }
-
-    fun navigateToItSelf(selectedItemIndexes: SelectedItemIndexes) {
-        navController.navigate(QuestionDisplayFragmentDirections.actionQuizQuestionsSelf(selectedItemIndexes))
     }
 
     fun navigateToGameFinish(finalScore: FinalScore) {
@@ -135,6 +130,4 @@ class QuestionDisplayView(private val view: View) {
         categoryName.visibility = View.VISIBLE
         difficultyLevel.visibility = View.VISIBLE
     }
-
-
 }
