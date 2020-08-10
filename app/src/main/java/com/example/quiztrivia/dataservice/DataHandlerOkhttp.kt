@@ -2,6 +2,7 @@ package com.example.quiztrivia.dataservice
 
 import com.example.quiztrivia.Outcome
 import com.example.quiztrivia.dataservice.json.JsonParser
+import com.example.quiztrivia.dataservice.network.NetworkService
 import com.example.quiztrivia.dataservice.network.OkhttpService
 import com.example.quiztrivia.optionselection.CategoryMetadata
 import com.example.quiztrivia.optionselection.QuestionMetadata
@@ -9,7 +10,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class DataHandlerOkhttp(): DataHandler {
 
-    private val okhttpService = OkhttpService()
+    private val okhttpService: NetworkService = OkhttpService()
     private val jsonParser = JsonParser()
     private val dataAdapter = DataAdapter()
 
