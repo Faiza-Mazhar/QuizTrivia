@@ -1,6 +1,6 @@
 # QuizTrivia
-A trivia quiz native android app using Kotlin using `MVVM-C` for app core and `Hexagonal arcgitecure` for external api connections. Testing is done using `Mockito`. Navigation is done using `Android Jetpack's Navigation`. 
-It uses [Trivia API](https://opentdb.com/api_config.php) fetch question data. 
+A trivia quiz native android app using Kotlin using `MVVM-C` for app core and `Hexagonal architecture` for external API connections. Testing is done using `Mockito`. Navigation is done using `Android Jetpack's Navigation`. 
+It uses [Trivia API](https://opentdb.com/api_config.php) to fetch question data. 
 For data fetching [Okhttp Library](https://square.github.io/okhttp/) is used. 
 For JSON parsing [Moshi Library](https://github.com/square/moshi) is used. 
 
