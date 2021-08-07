@@ -28,7 +28,7 @@ class OkhttpService : NetworkService {
                     continuation.resume(outcome)
                 }
                 override fun onResponse(call: Call, response: Response) {
-                    response.body()?.string()?.also {
+                    response.body?.string()?.also {
                         val outcome = Outcome.Success(it)
                         continuation.resume(outcome)
                     }
