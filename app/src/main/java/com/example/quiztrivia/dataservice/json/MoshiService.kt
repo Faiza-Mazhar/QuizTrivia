@@ -12,7 +12,7 @@ class MoshiService {
         }
 
     fun <T : Any> fromJson(jsonString: String, clazz: KClass<T>): T {
-        return mapper.adapter<T>(clazz.java).lenient().fromJson(jsonString)
+        return mapper.adapter(clazz.java).lenient().fromJson(jsonString)
             ?: throw JsonDataException("Error parsing json - object was null")
     }
 }
