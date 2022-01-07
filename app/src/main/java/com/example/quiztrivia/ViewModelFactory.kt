@@ -17,7 +17,7 @@ class ViewModelFactory(private val selectedItemIndex: SelectedItemIndexes = Sele
     }
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when (modelClass) {
             OptionSelectionViewModel::class.java -> optionSelectionViewModel()
             HomeViewModel::class.java -> homeViewModel()
