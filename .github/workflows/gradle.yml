@@ -35,6 +35,3 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: build
-
-    - name: Unit Test
-      run: ./gradlew testDebugUnitTest
