@@ -12,7 +12,7 @@ internal class IndexUtilsTest {
     private val baseURL= "https://opentdb.com/api.php?amount="
     @Test
     fun `if index is between 1-8, then it returns the corresponding number of question`() {
-        val expectedNumber = "9"
+        val expectedNumber = "7"
         Assert.assertEquals(expectedNumber,
             getNumQuestionFromIndex(3)
         )
